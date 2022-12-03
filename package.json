@@ -4,7 +4,10 @@
   "description": "",
   "main": "AppBackEnd.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon AppBackEnd.js",
+    "client": "npm start --prefix ./chanhvo_csis3380_project",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
