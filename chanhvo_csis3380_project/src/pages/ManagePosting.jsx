@@ -6,6 +6,7 @@ const ManagePosting = () => {
 
   const {listPet, setListPet} = useContext(AppContext);
   const {listRequest, setListRequest} = useContext(AppContext);
+  const {isLoggedIn} = useContext(AppContext);
 
   const [showEditForm, setShowEditForm] = useState(false);
   const [petInfoModal, setPetInfoModal] = useState({});
@@ -346,7 +347,16 @@ const ManagePosting = () => {
     setListRequest(remainRequest);
   }
   console.log(listRequest);
-  return (
+
+  // CHECK IF USER LOGGED IN, SHOW ALL CONTENT, ELSE, SHOW REQUIRE LOGIN
+  if(isLoggedIn === false){
+    return(
+      <div className="row text-center align-items-center m-5 rounded-4" style={{minHeight: "20vh", background: "#EEF3F3"}}>
+        <h2 className="text-info">Sorry! You have to login before using the service</h2>
+      </div>
+    )
+  } else if (isLoggedIn === true)
+  {return (
     <>
       <h2>This Page for Manage Adopt Request</h2>
       {/* {console.log("Set new list request",listRequest)} */}
@@ -437,7 +447,7 @@ const ManagePosting = () => {
 
 
     </>
-  );
+  )};
 }
 
 export default ManagePosting;

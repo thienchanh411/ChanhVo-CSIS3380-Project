@@ -4,8 +4,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import React, {Component} from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import React, {useContext} from 'react';
+import { BrowserRouter as Router, Route, Routes, Link, Navigate } from 'react-router-dom';
 import HomePage from '../pages/HomePage';
 import RehomePet from '../pages/ReHomePet';
 import AdoptPet from '../pages/AdoptPet'
@@ -16,15 +16,17 @@ import NotFoundPage from '../pages/NotFoundPage';
 import MyProfilePage from '../pages/MyProfilePage';
 import ManagePosting from '../pages/ManagePosting';
 import AdminPage from '../pages/AdminPage';
+import { AppContext } from './AppContext';
 
-class NavigationBar extends Component {
-  state = {
-
+const NavigationBar = () => {
+  const { loggedInID,setLoggedInID,isLoggedIn, setIsLoggedIn } = useContext(AppContext);
+  const handleLoggout = () => {
+    setLoggedInID("");
+    setIsLoggedIn(false);
   }
 
-  render(){
-    return (
-      // Keep the nav element inside Router element, if not can cause 
+  return ( 
+    // Keep the nav element inside Router element, if not can cause 
       // error: "useHref() only used in Router"
       <Router>
           <Navbar bg="light" expand="lg" >
@@ -32,34 +34,36 @@ class NavigationBar extends Component {
           <Navbar.Brand href="/">HomePage</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse className="row justify-content-end" align = "end">
-            <Nav
+
+           <Nav
               className="justify-content-end me-auto my-2 my-lg-0 fs-4"
               style={{ maxHeight: '100px' }}
-              navbarScroll
+              navbarScroll id="customNavbar"
             >
-              <Link className="nav-link" to="admin">Admin</Link>
               <Link className="nav-link" to="/">Home</Link>
+              <Link className="nav-link" to="admin">Admin</Link>
+              
               <Link className="nav-link" to="rehomepet">Rehome Pet</Link>
               <Link className="nav-link" to="adoptpet">Adopt Pet</Link>
-              <Link className="nav-link" to="login">Login</Link>
-              {/* <Nav.Link href="/">Home</Nav.Link>
-              <Nav.Link href="/rehomepet">Rehome Pet</Nav.Link>
-              <Nav.Link href="/adoptpet">Adopt Pet</Nav.Link>
-              <Nav.Link href="/login">Login</Nav.Link> */}
-  
-              <NavDropdown title="My Account" id="navbarScrollingDropdown">
+              {isLoggedIn ? "" : <Link className="nav-link" to="login">Login</Link>}
+              
+
+              {/* If use logged in, will show the dropdown nav items */}
+
+              {isLoggedIn ? (<NavDropdown title="My Account" id="navbarScrollingDropdown">
                 <NavDropdown.Item>
-                  <Link className="nav-link" to="/myprofile">My Profile</Link>
+                  <Link className="nav-link" to={`profile/${loggedInID}`}>My Profile</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item href="manageposting">
                   <Link className="nav-link" to="/manageposting">Manage Posting</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="/logout">
+                <NavDropdown.Item href="logout">
                   Logout
                 </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
+              </NavDropdown>) : ""}
+              
+            </Nav> 
             
           </Navbar.Collapse>
         </Container>
@@ -70,21 +74,18 @@ class NavigationBar extends Component {
             <Route exact path='rehomepet' element={<RehomePet />} />
             <Route exact path='adoptpet' element={<AdoptPet />} />
             <Route exact path='myaccount' element={<MyAccount />} />
-            <Route exact path='myprofile' element={<MyProfilePage />} />
+            <Route exact path={`profile/:id`} element={<MyProfilePage />} />
             <Route exact path='login' element={<Login/>} />
             <Route exact path='register' element={<Register />} />
             <Route exact path='manageposting' element={<ManagePosting />} />
             <Route exact path='admin' element={<AdminPage />}></Route>
+            <Route exact path='logout' handleLoggout={handleLoggout} element={<Navigate to={"/"}/>}></Route>
             <Route exact path='*' element={<NotFoundPage />}/>
           </Routes>
       </Router>
-
-      
-  
-    );
-  }
-  
+   );
 }
+ 
 export default NavigationBar;
 
 // REFERENCE

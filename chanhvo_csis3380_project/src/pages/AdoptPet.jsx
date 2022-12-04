@@ -4,6 +4,7 @@ import { AppContext } from "../components/AppContext";
 const AdoptPet = () => {
   const {listRequest, setListRequest} = useContext(AppContext);
   const {listPet, setListPet} = useContext(AppContext);
+  const {isLoggedIn} = useContext(AppContext);
   const userID = 3;
 
   const isAuthenticated = true;
@@ -100,7 +101,15 @@ const AdoptPet = () => {
 
   };
 
+  // CHECK IF USER LOGGED IN, SHOW ALL CONTENT, ELSE, SHOW REQUIRE LOGIN
 
+  if(isLoggedIn === false){
+    return(
+      <div className="row text-center align-items-center m-5 rounded-4" style={{minHeight: "20vh", background: "#EEF3F3"}}>
+        <h2 className="text-info">Sorry! You have to login before using the service</h2>
+      </div>
+    )
+  } else if (isLoggedIn === true){
 
   return (
     // <>
@@ -170,7 +179,7 @@ const AdoptPet = () => {
       {showModal === false ? "" : displayModal(modalInfo)}
     </div>
 
-  );
+  )};
 };
 
 export default AdoptPet;

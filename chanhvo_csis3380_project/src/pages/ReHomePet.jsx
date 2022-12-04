@@ -6,6 +6,7 @@ import { AppContext } from "../components/AppContext";
 const RehomePet = () => {
 
   const {listPet, setListPet} = useContext(AppContext)
+  const{isLoggedIn} = useContext(AppContext);
 
   const [petType, setPetType] = useState("");
   const [isSpayed, setIsSpayed] = useState("");
@@ -50,7 +51,14 @@ const RehomePet = () => {
 
 
   }
-
+// CHECK IF USER LOGGED IN, SHOW ALL CONTENT, ELSE, SHOW REQUIRE LOGIN
+if(isLoggedIn === false){
+  return(
+    <div className="row text-center align-items-center m-5 rounded-4" style={{minHeight: "20vh", background: "#EEF3F3"}}>
+      <h2 className="text-info">Sorry! You have to login before using the service</h2>
+    </div>
+  )
+} else if (isLoggedIn === true)
   return (
     <div className="">
       <div className="container w-90 mx-auto  p-8 shadow-sm">

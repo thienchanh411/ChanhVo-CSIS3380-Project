@@ -3,10 +3,14 @@ const bodyParser = require('body-parser');
 const app = express();
 const mongoose = require('mongoose');
 const User = require("./models/UserModel.js");
+const cors = require('cors')
 
 const login = require("./Routes/loginRoute.js");
 const pet = require("./Routes/petRoute.js");
 const request = require("./Routes/requestRoute");
+const profile = require("./Routes/profileRoute.js");
+
+app.use(cors());
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
@@ -84,6 +88,7 @@ app.post("/api/register/", async (req, res) =>  {
 app.use("/api/login", login);
 app.use("/api/pet", pet);
 app.use("/api/request", request);
+app.use("/api/profile", profile);
 
 
 const user1 = new User({
