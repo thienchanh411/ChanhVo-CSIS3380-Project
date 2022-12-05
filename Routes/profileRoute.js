@@ -39,6 +39,7 @@ app.get("/:id", async(req, res) => {
     }
 })
 
+
 app.put("/:id", async (req, res) => {
     const {firstname, lastname,email, phone, street, city, province, 
         postcode, password, retypepassword} = req.body;

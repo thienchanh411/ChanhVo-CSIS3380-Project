@@ -9,6 +9,7 @@ const login = require("./Routes/loginRoute.js");
 const pet = require("./Routes/petRoute.js");
 const request = require("./Routes/requestRoute");
 const profile = require("./Routes/profileRoute.js");
+const register = require("./Routes/registerRoute.js");
 
 app.use(cors());
 
@@ -42,53 +43,18 @@ app.get("/api/admin/", async (req, res) =>  {
    
 })
 
-app.get("/api/register", async (req, res) => {
-    await mongoose.connect(urlMongoDB);
-    console.log("Connected to DB from get register");
-    res.send("Connected to DB from get register")
-    mongoose.connection.close()
-})
-
-app.post("/api/register/", async (req, res) =>  {
-
-    const {email, password, firstname, lastname, phone, street, city, province, postcode} = req.body;
-    const status = true;
-    console.log(email, password, firstname, lastname, phone, street, city,province, postcode)
-    try{
-        const user1 = new User({
-            email,
-            password,
-            firstname ,
-            lastname ,
-            phone,
-            street,
-            city,
-            province,
-            postcode,
-            status,
-        });
-        await mongoose.connect(urlMongoDB);
-        console.log("Connected to MongoDB");
-
-        user1.save(err=> {
-            if(err) {
-                console.log("Error when Post request", err);
-            }else {
-                console.log("Added new user successfully")
-                res.send(user1);
-                mongoose.connection.close();
-            }
-        })
-    }catch (error) {
-        console.log("Error when post in api/register ", error)
-    }
-
-})
+// app.get("/api/register", async (req, res) => {
+//     await mongoose.connect(urlMongoDB);
+//     console.log("Connected to DB from get register");
+//     res.send("Connected to DB from get register")
+//     mongoose.connection.close()
+// })
 
 app.use("/api/login", login);
 app.use("/api/pet", pet);
 app.use("/api/request", request);
 app.use("/api/profile", profile);
+app.use("/api/register", register);
 
 
 const user1 = new User({
