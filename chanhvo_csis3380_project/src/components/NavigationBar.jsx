@@ -20,6 +20,7 @@ import { AppContext } from './AppContext';
 
 const NavigationBar = () => {
   const { loggedInID,setLoggedInID,isLoggedIn, setIsLoggedIn } = useContext(AppContext);
+
   const handleLoggout = () => {
     setLoggedInID("");
     setIsLoggedIn(false);
@@ -51,16 +52,19 @@ const NavigationBar = () => {
               {/* If use logged in, will show the dropdown nav items */}
 
               {isLoggedIn ? (<NavDropdown title="My Account" id="navbarScrollingDropdown">
-                <NavDropdown.Item>
+                {/* <NavDropdown.Item> */}
                   <Link className="nav-link" to={`profile/${loggedInID}`}>My Profile</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item href="manageposting">
+                {/* </NavDropdown.Item>
+                <NavDropdown.Item > */}
                   <Link className="nav-link" to="/manageposting">Manage Posting</Link>
-                </NavDropdown.Item>
+                {/* </NavDropdown.Item> */}
                 <NavDropdown.Divider />
-                <NavDropdown.Item href="logout">
+                <Link className="nav-link" to="logout">
+                  <button onClick={handleLoggout}>Logout</button>
+                  </Link>
+                {/* <NavDropdown.Item href="logout">
                   Logout
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
               </NavDropdown>) : ""}
               
             </Nav> 
@@ -79,7 +83,7 @@ const NavigationBar = () => {
             <Route exact path='register' element={<Register />} />
             <Route exact path='manageposting' element={<ManagePosting />} />
             <Route exact path='admin' element={<AdminPage />}></Route>
-            <Route exact path='logout' handleLoggout={handleLoggout} element={<Navigate to={"/"}/>}></Route>
+            <Route exact path='logout' element={<Navigate to={"/"}/>}></Route>
             <Route exact path='*' element={<NotFoundPage />}/>
           </Routes>
       </Router>

@@ -39,6 +39,39 @@ app.get("/:id", async(req, res) => {
     }
 })
 
+app.get("/viewuser/:id", async(req, res) => {
+
+    // const {firstname, lastname,email, phone, street, city, provice, postcode, password} = req.body;
+    
+    try{
+
+        let _id = req.params.id;
+        _id = mongoose.Types.ObjectId(_id);
+        await mongoose.connect(urlMongoDB);
+        User.findById(
+            {_id : _id},
+            (err, user) => {
+                if(err){
+                    console.log("Error when find user by ID, after connect DB");
+                }else{
+                    if(!user){
+                        console.log("No match user found");
+                        res.send("No match user found")
+                    }else {
+                        // console.log("Found user match with ID", user);
+                        res.send(`${user.firstname} ${user.lastname}`);
+                    }
+                  
+                    mongoose.connection.close();
+                }
+            }
+        )
+    
+    }catch(err){
+        console.log("Error when get user profile", err);
+    }
+})
+
 
 app.put("/:id", async (req, res) => {
     const {firstname, lastname,email, phone, street, city, province, 

@@ -28,8 +28,9 @@ app.get("/", async (req, res) => {
 
 // GET PETS BY OWNERID
 app.get("/toowner/:ownerId", async(req, res) => {
+    let ownerId = req.params.ownerId;
     try{
-        let ownerId = req.params.ownerId;
+        
         await mongoose.connect(urlMongoDB);
         console.log("Connected to DB when get pet by owner ID");
 
@@ -60,10 +61,11 @@ app.get("/touser/:userid", async(req, res) => {
         // if only need ownerId 
         //Pet.find({ownerId: {$eq : ownerId}}, (err, pets) => {})
 
-        Pet.find({$and: [{ownerId: {$ne : userid}} , {status: {$eq: "Active"}} ]}, (err, pets) => {
+        Pet.find({$and: [{ownerId: {$ne : userid}} , 
+                    {$or: [{status: {$eq: "Active"}},  {status: {$eq: "Adopted"}}]}]}, (err, pets) => {
             if(err) console.log("Error when get pet after connect to DB", err);
             else{
-                console.log("get pets successful", pets);
+                // console.log("get pets successful", pets);
                 res.send(pets);
                 mongoose.connection.close()
             }
@@ -106,7 +108,10 @@ app.post("/", async (req, res) => {
         await mongoose.connect(urlMongoDB);
         console.log("Connnected from post Pet API");
         newPet.save(err => {
-            if(err) console.log("Error when post a new pet", err);
+            if(err){
+                console.log("Error when post a new pet", err);
+                res.send("Error when post a new pet");
+            } 
             else {
                 console.log("Added new user successfully")
                 res.send(newPet);
@@ -122,18 +127,20 @@ app.post("/", async (req, res) => {
 // UPDATE PET INFORMATION
 
 app.put("/update/:id", async(req, res) => {
-    const {petName, petType, breed, isSpayed, rehomeReason, gender, age, size, image, color,
-        description, diet, status} = req.body;
+    const {ownerId, petName, petType, gender, breed, age, size, isSpayed, color, image, description, 
+        diet,rehomeReason, status} = req.body;
+        console.log(ownerId,petName, petType, breed, isSpayed, rehomeReason, gender, age, size, image, color,
+            description, diet, status)
     try{
 
         let _id = req.params.id;
-        _id = mongoose.Types.ObjectId(_id);
+        _id = mongoose.Types.ObjectId(_id.trim());
 
         await mongoose.connect(urlMongoDB);
         console.log("Connected to DB in put pet request API");
         Pet.updateOne(
             {_id : _id},
-            {petName, petType, breed, isspayed, rehomeReason, gender, age, size, image, color,
+            {ownerId, petName, petType, breed, isSpayed, rehomeReason, gender, age, size, image, color,
                 description, diet, status},
             (err, msg) => {
                 if(err) {
@@ -145,7 +152,7 @@ app.put("/update/:id", async(req, res) => {
                         console.log("No match found, after connect to DB, for pet update");
                     }else{
                         console.log(`Successfully updated ${msg.modifiedCount} document`);
-                        res.send(`Successfully updated ${msg.modifiedCount} document`);
+                        res.send(`${msg.modifiedCount}`);
                     }
                     mongoose.connection.close();
                 }
@@ -153,7 +160,7 @@ app.put("/update/:id", async(req, res) => {
         )
 
     }catch (err) {
-        console.log("Error when edit pet in API", err)
+        console.log("Error when edit pet in API: ", err)
     }
 })
 
@@ -182,7 +189,43 @@ app.patch("/delete/:id", async (req, res) => {
                         res.send("No match result found")
                     }else {
                         console.log(`Update successfull ${msg.modifiedCount} record`);
-                        res.send(`Update successfull ${msg.modifiedCount} record`)
+                        res.send(`${msg.modifiedCount}`)
+                    }
+                    mongoose.connection.close()
+                }
+            }
+        )
+
+    }catch(err) {
+        console.log("Error when delete pet", err)
+    }
+})
+
+// UPDATE PET IS ADOPTED
+app.patch("/adopted/:id", async (req, res) => {
+    try{
+
+        let _id = req.params.id;
+        _id = mongoose.Types.ObjectId(_id);
+
+        const status = "Adopted";
+       
+        await mongoose.connect(urlMongoDB);
+        console.log("Connect to DB when delete pet")
+        Pet.updateOne(
+            {_id : _id},
+            {status},
+            (err, msg) => {
+                if(err){
+                    console.log("Error after connecting to DB when delete pet", err);
+                    res.send("Error after connecting to DB when delete pet")
+                } else{
+                    if(msg.modifiedCount === 0){
+                        console.log("No match result found");
+                        res.send("No match result found")
+                    }else {
+                        console.log(`Update successfull ${msg.modifiedCount} record`);
+                        res.send(`${msg.modifiedCount}`)
                     }
                     mongoose.connection.close()
                 }

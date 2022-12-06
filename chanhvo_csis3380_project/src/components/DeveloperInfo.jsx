@@ -22,7 +22,7 @@ const Developer = () => {
                             </div>
                             <div className="probootstrap-card-text pb-3">
                                 <h4 className="mt-3">Chanh Vo</h4>
-                                <p><a href="/">View Details</a></p>
+                                <p><a href="https://github.com/thienchanh411">View Details</a></p>
                             </div>
                         </div>
                     </div>

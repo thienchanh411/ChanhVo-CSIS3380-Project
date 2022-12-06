@@ -43,6 +43,14 @@ app.get("/api/admin/", async (req, res) =>  {
    
 })
 
+// app.get("http://localhost:5000/api/pet/toowner/", (req, res) => {
+//     res.send("User has not logged in")
+// })
+// app.get("http://localhost:5000/api/request/toowner/", (req, res) => {
+//     res.send("User has not logged in")
+// })
+
+
 // app.get("/api/register", async (req, res) => {
 //     await mongoose.connect(urlMongoDB);
 //     console.log("Connected to DB from get register");

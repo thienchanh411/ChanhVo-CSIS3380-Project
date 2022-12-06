@@ -24,6 +24,7 @@ function MyProfilePage() {
 
    
     useEffect(() =>{
+        if(loggedInID === "") return;
         const urlAPI = `http://localhost:5000/api/profile/${loggedInID}`
         axios.get(urlAPI)
         .then((res) => {
@@ -45,10 +46,10 @@ function MyProfilePage() {
         .catch((err) => {
             console.log("Error when update profile", err);
         })
-    }, []);
+    }, [loggedInID]);
 
     const handleEditProfile = async (event) => {
-        const showNotification = document.getElementById("showResultProfile")
+        const showNotification = document.getElementById("showResultProfile");
 
         const urlAPI = `http://localhost:5000/api/profile/${loggedInID}`
         console.log(urlAPI);

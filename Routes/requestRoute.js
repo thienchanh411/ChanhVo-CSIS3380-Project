@@ -32,18 +32,20 @@ app.get("/toowner/:userId", async (req, res) => {
     const ownerId = req.params.userId;
     try{
         await mongoose.connect(urlMongoDB);
-        console.log("Connnected to DB from get All Requests");
+        console.log("Connnected to DB from get All Requests for Owner");
 
         // IF WE SEND RESPONSE IN HERE WE WILL GOT THE ERROR WHEN WE SEND THE RESULT IN BELOW
         // res.send("Connected to DB")
         Request.find({ownerId: {$eq : ownerId}},(err, requests) => {
             if(err){
                 console.log("Error when get all request, after connected DB",err);
+                res.send([]);
             }else{
-                console.log("Get information successfull");
+                console.log("Get information successfull", requests);
                 res.send(requests);
                 mongoose.connection.close();
             }
+            
         })
     }catch(err){
         console.log("Errer form get all request API", err)
@@ -95,7 +97,7 @@ app.post("/:userID", async (req, res) => {
             res.send("Error after connect to DB");
         }else{
             console.log("Add new request successful")
-            res.send("Add new request successful" );
+            res.send(newRequest );
             mongoose.connection.close();
         }
     })
@@ -108,7 +110,7 @@ app.post("/:userID", async (req, res) => {
 // UPDATE ACCEPT REQUEST 
 
 app.put("/byowner/:id", async (req, res) => {
-    const {petId, ownerId, senderId, requestTime, responseTime, status} = req.body;
+    const {responseTime, status} = req.body;
 
     try{
         let _id = req.params.id;
@@ -118,7 +120,7 @@ app.put("/byowner/:id", async (req, res) => {
         console.log("Connected to DB when update request");
         Request.updateOne(
             {_id: _id},
-            {petId, ownerId, senderId, requestTime, responseTime, status},
+            {responseTime, status},
             (err, msg) => {
                 if(err) {
                     console.log("Error when update request, after connect to DB", err);
@@ -127,7 +129,7 @@ app.put("/byowner/:id", async (req, res) => {
                     if(msg.modifiedCount === 0){
                         res.send("No match request found")
                     }else{
-                        res.send(`Update successfully ${msg.modifiedCount}`);
+                        res.send(`${msg.modifiedCount}`);
                     }
                 }
             }
@@ -135,6 +137,82 @@ app.put("/byowner/:id", async (req, res) => {
 
     }catch(err) {
         console.log("Error when Update request", err)
+    }
+})
+
+app.put("/byowner/reject/:id/:petId", async(req, res) => {
+    const {responseTime} = req.body;
+    let _id = req.params.id;
+    _id = mongoose.Types.ObjectId(_id.trim());
+    let petId = req.params.petId;
+
+    
+    try{
+        await mongoose.connect(urlMongoDB);
+        console.log("Connected to DB when update request");
+        // Request.updateOne(
+        //     {_id: _id},
+        //     {responseTime, status : "Accepted"},
+        //     (err, msg) => {
+        //         if(err) {
+        //             console.log("Error when update request, after connect to DB", err);
+
+        //         }else{
+        //             if(msg.modifiedCount === 0){
+        //                 res.send("No match accept request found")
+        //             }else{
+        //                 res.send(`${msg.modifiedCount}`);
+        //             }
+        //         }
+        //     }
+        // )
+        Request.updateMany(
+            {$and: [{_id: {$ne : _id}} , {petId: {$eq: petId}} ]},
+            {responseTime, status : "Rejected"},
+            (err, msg) => {
+                if(err) {
+                    console.log("Error when update request, after connect to DB", err);
+
+                }else{
+                    if(msg.modifiedCount === 0){
+                        res.send("No match reject (A) request found")
+                    }else{
+                        res.send(`${msg.modifiedCount}`);
+                    }
+                }
+                mongoose.connection.close();
+            }
+        )
+    }catch(err){
+        console.log("Error when accept request: ", err);
+    }
+})
+
+app.put("/updatemany/:ownerId", async(req,res) => {
+    let ownerId = req.params.ownerId;
+    ownerId = mongoose.Types.ObjectId(ownerId.trim());
+    try{
+        await mongoose.connect(urlMongoDB);
+        Request.updateMany(
+            {ownerId: ownerId},
+            {status: "Pending", responseTime: ""},
+            (err, msg) => {
+                if(err) {
+                    console.log("Error when update request, after connect to DB", err);
+
+                }else{
+                    if(msg.modifiedCount === 0){
+                        res.send("No match reject (A) request found")
+                    }else{
+                        res.send(`${msg.modifiedCount}`);
+                    }
+                }
+                mongoose.connection.close();
+            }
+        )
+
+    }catch(err){
+        console.log("Error when accept request: ", err);
     }
 })
 

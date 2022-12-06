@@ -1,83 +1,67 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { AppContext } from '../components/AppContext';
 import ListManageRequest from '../components/ListManageRequest';
+import axios from 'axios';
 
 const ManagePosting = () => {
 
   const {listPet, setListPet} = useContext(AppContext);
   const {listRequest, setListRequest} = useContext(AppContext);
-  const {isLoggedIn} = useContext(AppContext);
+  const {isLoggedIn, loggedInID} = useContext(AppContext);
 
   const [showEditForm, setShowEditForm] = useState(false);
   const [petInfoModal, setPetInfoModal] = useState({});
   const [showCollapseForm, setShowCollapseForm] = useState(false);
   const [styleManageForm, SetStyleManageForm] = useState('none');
 
-  // const [disableGroupResponseBtn,setDisableGroupResponseBtn] = useState(false)
-   
-  const isAuthenticated = true;
 
-  const ownerID = 1;
+    useEffect(() => {
+    const urlAPI = `http://localhost:5000/api/request/toowner/${loggedInID}`;
+    console.log("Api request",urlAPI)
+    if(loggedInID === ""){
+      return
+    }
 
-  // Function handle Delete Posting
-  const handleDeletePosting = (pet) => {
-    const newListPet = listPet.filter((petElem) => petElem.id !== pet.id)
-    setListPet(newListPet);
+      axios.get(urlAPI)
+      .then((res) => {
+        setListRequest(res.data);
+      })
+      .catch((err) => {
+        console.log("User has not logged in");
+      })
+
+    
+  }, [loggedInID, setListRequest])
+  
+
+  // FUNCTION HANDLE DELETE POSTING
+  const handleDeletePosting = async (pet) => {
+
+    const urlAPI = `http://localhost:5000/api/pet/delete/${pet._id}`;
+
+    const {data} = await axios.patch(urlAPI);
+
+    if(data === 1){
+      const newListPet = listPet.filter((petElem) => petElem._id !== pet._id)
+      setListPet(newListPet);
+    }
+
+
   }
 
   // Function handle Edit Posting
-  const handleEditPosting = (pet) => {
+  const handleEditPosting = async (pet) => {
+    
+    // const urlAPI = `http://localhost:5000/api/pet/update/${pet._id}`;
     setShowEditForm(true);
     setPetInfoModal(pet);
   }
-
+  // METHOD HANDLE CLOSE BTN OF EDIT POPUP FORM
   const closeEditForm = () => {
     setShowEditForm(false)
   }
 
-  const editPetInformation = (pet) => {
-
-    const name = document.getElementById("petName").value
-    const petType = document.getElementById("petType").value
-    const breed = document.getElementById("breedInput").value
-    const gender = document.getElementById("gender").value
-    const spayed = document.getElementById("spayed_neutered").value
-    const age = document.getElementById("age").value
-    const size = document.getElementById("size").value
-    const color = document.getElementById("color").value
-    let picture = document.getElementById("uploadPicture").value
-    const desciption = document.getElementById("description").value
-    const diet = document.getElementById("diet").value
-    const rehomeReason = document.getElementById("rehomeReason").value
-
-    picture === "" ? (picture = pet.picture) : picture = document.getElementById("uploadPicture").value
-
-    const indexEditPet = listPet.findIndex((petInList) => petInList.id === pet.id);
-    const newListPet = listPet.filter((petInlist) => petInlist.id !== pet.id);
-    let editPet = listPet.filter((petInlist) => petInlist.id === pet.id)
-    editPet = {
-      id: pet.id,
-      name,
-      petType,
-      gender,
-      breed,
-      spayed,
-      age,
-      size,
-      color,
-      picture,
-      desciption,
-      diet,
-      rehomeReason
-    }
-
-    newListPet.splice(indexEditPet, 0, editPet);
-
-    setListPet(newListPet)
-    setShowEditForm(false)
-  }
-
-  const handleManageBtn = (id) => {
+  const handleManageBtn = (_id) => {
 
     if (showCollapseForm === false) {
       setShowCollapseForm(true)
@@ -88,12 +72,69 @@ const ManagePosting = () => {
       SetStyleManageForm('none')
     }
 
-    const manageForm = document.getElementById(`collapse${id}`)
+    const manageForm = document.getElementById(`collapse${_id}`)
     console.log(manageForm);
     manageForm.style.display = styleManageForm;
   }
 
+  const editPetInformation = async (pet) => {
+
+    const petName = document.getElementById("petName").value
+    const petType = document.getElementById("petType").value
+    const breed = document.getElementById("breedInput").value
+    const gender = document.getElementById("gender").value
+    const isSpayed = document.getElementById("spayed_neutered").value
+    const age = document.getElementById("age").value
+    const size = document.getElementById("size").value
+    const color = document.getElementById("color").value
+    let image = document.getElementById("uploadPicture").value
+    const description = document.getElementById("description").value
+    const diet = document.getElementById("diet").value
+    const rehomeReason = document.getElementById("rehomeReason").value
+
+    const status = "Active";
+
+    // image === "" ? (image = pet.image) : image = document.getElementById("uploadPicture").value
+    console.log("Click edit pet profile")
+    // event.preventDefault();
+
+    if(image===""){
+      image = pet.image;
+    }
+    const showNotification = document.getElementById("showResultUpdatePet");
+    const urlAPI = `http://localhost:5000/api/pet/update/${pet._id}`;
+    console.log("Url when click update",urlAPI);
+    console.log("petID: ", pet._id);
+
+    const {data} = await axios.put(urlAPI,  {
+      ownerId : loggedInID, 
+      petName, petType, gender, breed, age, size, isSpayed, color, image, description, 
+      diet,rehomeReason, status})
+    console.log("result after update pet profile",data)
+    if(data === 1) {
+        showNotification.innerHTML = "Your pet profile has been updated successfully";
+        showNotification.style.color = "green";
+    }else{
+        showNotification.innerHTML = "No thing changed in your pet profile";
+        showNotification.style.color = "blue";
+    }
+
+
+    const newListPet = listPet.map(petElem => 
+      petElem._id === pet._id ? {
+        // _id: pet._id,ownerId : loggedInID, 
+        ...petElem,
+        petName, petType, gender, breed, age, size, isSpayed, color, image, description, 
+        diet,rehomeReason, status, 
+      }: {...petElem});
+
+    console.log("list pet after update",newListPet)
+    setListPet(newListPet)
+    // setShowEditForm(false)
+  }
+  // METHOD SHOW POPUP EDIT FORM
   const displayEditForm = (pet) => {
+    console.log("pet _id in edit form",pet._id)
     const styleEditForm = {
       display: "block",
       backgroundColor: "rgba(0,0,0,0.8)"
@@ -108,7 +149,9 @@ const ManagePosting = () => {
 
             </div>
             <div className="modal-body">
-              <form data-multi-step className="multi-step-form m-1 p-2 ">
+              <form data-multi-step className="multi-step-form m-1 p-2 "
+                // onSubmit={editPetInformation(pet)}
+                >
                 {/* <div className="card" data-step> */}
                 <div className="">
                   <h3 className="text-center font-weight-bolder border-bottom border-success mt-5"
@@ -125,7 +168,6 @@ const ManagePosting = () => {
                     <option value=""  >Select One</option>
                     <option value="dog">Dog</option>
                     <option value="cat">Cat</option>
-                    <option value="none">Other</option>
                   </select>
 
                 </div>
@@ -136,12 +178,12 @@ const ManagePosting = () => {
                   <label htmlFor="spayed_neutered" className="col-lg-4 col-form-label" style={{ fontWeight: "bold" }}>Is your pet spayed or neutered?</label>
                   {/* <div className=" col"> */}
                   <select className="col-lg-8 border-dark" name="spayed_neutered"
-                    id="spayed_neutered" defaultValue={pet.spayed}
-                  // onChange={(event)=>setSpayed(event.target.value)}
+                    id="spayed_neutered" defaultValue={pet.isSpayed}
+                  // onChange={(event)=>setIsSpayed(event.target.value)}
                   >
-                    <option data-eventlabel="unset" value="" >Select One</option>
-                    <option data-eventlabel="spayed/neutered" value="1">Yes</option>
-                    <option data-eventlabel="not spayed/neutered" value="0">No</option>
+                    <option data-eventlabel="unset">Select One</option>
+                    <option data-eventlabel="spayed/neutered" value="true">Yes</option>
+                    <option data-eventlabel="not spayed/neutered" value="false">No</option>
                   </select>
                   <span className="error-message fix-margin-1"></span>
                 </div>
@@ -178,8 +220,8 @@ const ManagePosting = () => {
                     style={{ fontWeight: "bold" }}>Your Pet name</label>
                   <input className="col-lg-8 " type="name" id="petName"
                     placeholder="Your Pet name"
-                    defaultValue={pet.name}
-                  // onChange={(event)=>setName(event.target.value)}
+                    defaultValue={pet.petName}
+                  // onChange={(event)=>setPetName(event.target.value)}
                   />
                 </div>
 
@@ -209,8 +251,8 @@ const ManagePosting = () => {
                     defaultValue={pet.age}
                     // onChange={(event)=>setAge(event.target.value)}
                     data-error-message="Select Age">
-                    <option value="">0-6 months</option>
-                    <option value="puppy">6-12 months</option>
+                    <option value="">Choose one</option>
+                    <option value="puppy">0-12 months</option>
                     <option value="young">1-3 years</option>
                     <option value="adult">3-7 years</option>
                     <option value="senior">Over 7 years</option>
@@ -244,14 +286,14 @@ const ManagePosting = () => {
                   <input className="col-lg-8 " type="file" id="uploadPicture"
                     accept="image/x-png,image/gif,image/jpeg"
 
-                  // onChange={(event)=>setPicture(event.target.value)}
+                  // onChange={(event)=>setImage(event.target.value)}
                   />
                 </div>
                 <div>
                   <div className="form-group row m-4 p-2">
                     <label htmlFor="description" className="col-lg-4 col-form-label">Description</label>
                     <textarea className="col-lg-8 border-dark" maxLength="1000" id="description" name="story"
-                      defaultValue={pet.desciption}
+                      defaultValue={pet.description}
                       // onChange={(event)=>setDescription(event.target.value)}
                       placeholder="Need time to think about? That’s ok, you can always edit later."
                       style={{ height: 100 }} ></textarea>
@@ -274,79 +316,107 @@ const ManagePosting = () => {
               <button type="button" className="btn btn-secondary" data-dismiss="modal"
                 onClick={() => closeEditForm()}
               >Close</button>
-              <button type="button" className="btn btn-primary"
-                onClick={() => editPetInformation(pet)}>Save changes</button>
+              <button type="button" className="btn btn-primary" 
+                onClick={() => editPetInformation(petInfoModal)}
+                >Save changes</button>
             </div>
+
+            <div className="row text-center mt-4 " style={{fontWeight: "bold"}}>
+              <p id="showResultUpdatePet"></p>
           </div>
+          </div>
+          
         </div>
       </div>
     )
   }
 
   // Handle accept request
-  function handleAccept(request) {
+  const handleAccept = async(request) => {
 
     console.log("Accept btn is clicked")
 
     let currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-    const date = currentDate.getDate();
-    const hour = currentDate.getHours();
-    const minute = currentDate.getMinutes();
-    const second = currentDate.getSeconds();
 
-    const acceptDate = hour + ":" + minute + ":" + second + " " + month + "/" + date + "/" + year;
-    const indexRequest = listRequest.findIndex((reqElem) => reqElem.requestId === request.requestId);
-    console.log(listRequest);
-    console.log(indexRequest);
-    let editRequest = listRequest.find((reqElem) => reqElem.requestId === request.requestId)
-    editRequest = {...editRequest, status: "Accepted", responseTime: acceptDate}
-    console.log(editRequest);
+    const urlRejectAPI 
+      = `http://localhost:5000/api/request/byowner/reject/${request._id}/${request.petId}`;
     
-    const remainRequest = listRequest.filter((reqElem) =>
-      (reqElem.requestId !== request.requestId))
-      .map((reqElem) => 
-        reqElem.petId === request.petId
-        ? { ...reqElem, status: "Rejected", responseTime: acceptDate }
-        : { ...reqElem }
-      )
-      console.log(remainRequest)
+    const {data} = await axios.put(urlRejectAPI, {
+      responseTime: currentDate.toUTCString(), 
+      status: "Rejected"
+    });
+    console.log(data);
+    const urlAPI = `http://localhost:5000/api/request/byowner/${request._id}`
 
-    remainRequest.splice(indexRequest, 0, editRequest);
-    console.log(remainRequest)
-    setListRequest(remainRequest);
-    // console.log("New List request", newListRequest)
+    const acceptRequest = async() => {
+      const {data} = await axios.put(urlAPI, {
+          responseTime : currentDate.toUTCString(), 
+          status: "Accepted"
+        })
+      
+      return {data};
+    }
+    acceptRequest();
 
-    //  console.log(document.getElementById(`groupResponseBtn${request.requestId}`)) 
+    const urlPetAPI = `http://localhost:5000/api/pet/adopted/${request.petId}`;
+
+    const updatedPet = await axios.patch(urlPetAPI);
+    console.log("updated pet", updatedPet);
+
+    console.log(listPet);
+
+    const newPetList = listPet.map(petElem => petElem._id === request.petId
+        ? {...petElem, status : "Adopted"} : {...petElem});
+    
+    setListPet(newPetList);
+    console.log(listPet);
+
+    const updatedReqList = listRequest.filter((requestElem) => request.petId === requestElem.petId)
+    .map((requestElem) => (requestElem._id === request._id) 
+    ? {...requestElem, responseTime : currentDate.toUTCString(), status: "Accepted"}
+    : {...requestElem, responseTime : currentDate.toUTCString(), status: "Rejected"})
+
+    const remainReqList = listRequest.filter((requestElem) => request.petId !== requestElem.petId);
+    const newRequestList = [];
+    updatedReqList.map(requestElem => newRequestList.push(requestElem));
+    remainReqList.map(requestElem => newRequestList.push(requestElem));
+    
+    setListRequest(newRequestList);
+
   }
-
-  const handleReject = (request) => {
+  // HANDLE REJECT REQUEST
+  const handleReject = async (request) => {
     let currentDate = new Date();
-    const year = currentDate.getFullYear();
-    const month = currentDate.getMonth();
-    const date = currentDate.getDate();
-    const hour = currentDate.getHours();
-    const minute = currentDate.getMinutes();
-    const second = currentDate.getSeconds();
-
-    const acceptDate = hour + ":" + minute + ":" + second + " " + month + "/" + date + "/" + year;
-
-    request.status = "Rejected";
-    request.responseTime = acceptDate;
+    
+    const status = "Rejected";
 
     console.log(request);
 
-    const indexRequest = listRequest.findIndex((reqElem) => reqElem.requestId === request.requestId);
+    const urlAPI = `http://localhost:5000/api/request/byowner/${request._id}`
 
-    const remainRequest = listRequest.filter((reqElem) =>
-    (reqElem.requestId !== request.requestId))
+    const {data} = await axios.put(urlAPI, {
+      responseTime : currentDate.toUTCString(), 
+      status
+    })
 
-    remainRequest.splice(indexRequest, 0, request);
-    console.log(remainRequest)
-    setListRequest(remainRequest);
+    console.log("Result when click reject request", data);
+
+    const newRequestList = listRequest.map((requestElem) => 
+      (requestElem._id === request._id) 
+      ? {...requestElem, responseTime : currentDate.toUTCString(), status}
+      : {...requestElem}
+    )
+    setListRequest(newRequestList);
+
+    // const indexRequest = listRequest.findIndex((reqElem) => reqElem.requestId === request.requestId);
+
+    // const remainRequest = listRequest.filter((reqElem) =>
+    // (reqElem.requestId !== request.requestId))
+
+    // remainRequest.splice(indexRequest, 0, request);
+    // console.log(remainRequest)
+    // setListRequest(remainRequest);
   }
-  console.log(listRequest);
 
   // CHECK IF USER LOGGED IN, SHOW ALL CONTENT, ELSE, SHOW REQUIRE LOGIN
   if(isLoggedIn === false){
@@ -362,29 +432,33 @@ const ManagePosting = () => {
       {/* {console.log("Set new list request",listRequest)} */}
       <div className="row m-auto">
         {listPet.length === 0 ? (<h4>There is no Posting</h4>) : ("")}
-        {listPet.map((pet, index) => {
+        {listPet.filter((pet) => pet.status === "Active")
+        .map((pet, index) => {
           return (
             < div  key={index}>
               <div className="row-lg col-md mx-4 px-5 py-3 justify-content-center fs-4" id="imgPetSearch">
                 <div className="row justify-content-center 
                 border border-info rounded shadow-lg p-1 mb-5 bg-body">
-                  <div className="col-3 align-content-center my-4">
-                    <img src={pet.picture} alt="pet  1" style={{ height: "35vh", width: "35vh" }} />
+                  <div className="col-4 align-content-center my-4">
+                    <img src={pet.image} alt="pet 1" style={{ height: "35vh", width: "35vh" }} />
+                    {/* {console.log(pet.image)} */}
                   </div>
                   <div className="col-6 align-content-center my-auto">
-                    <p>Name: {pet.name}</p>
+                    <p>Name: {pet.petName}</p>
                     <p>Breed: {pet.breed}</p>
-                    <p>Gender: {pet.gender}/ Age: {pet.age}</p>
-                    {isAuthenticated === false ? "" : (
+                    <p>Gender: {pet.gender}</p>
+                    <p>Age: {pet.age}</p> 
+                    <p>Color: {pet.color}</p>
+                    {/* {isAuthenticated === false ? "" : (
                       <p>Address: </p>
-                    )}
+                    )} */}
 
                   </div>
 
 
                   {/* Check if authenticated user will show the show detail btn and request btn */}
 
-                  {isAuthenticated === false ? "" : (
+                  {isLoggedIn === false ? "" : (
                     <div className="col-2 ">
                       <div className="row mx-auto justify-content-center my-5">
                         <button type="button" className="btn btn-secondary" data-bs-toggle="modal"
@@ -398,7 +472,7 @@ const ManagePosting = () => {
                         <button className="btn btn-success " style={{ width: 120 }}
                           // data-bs-toggle="collapse"
                           // data-bs-target="#collapseManageForm"
-                          onClick={() => handleManageBtn(pet.id)}
+                          onClick={() => handleManageBtn(pet._id)}
                         >Manage</button>
                       </div>
                       <div className="row mx-auto justify-content-center my-5">
@@ -414,12 +488,13 @@ const ManagePosting = () => {
               {/* Collapse managing board */}
               {/* <div className="collapse row-lg-8 mx-5" id={`collapse${pet.id}`}> */}
               <div className=" row-lg-8 mx-5" style={{ display: styleManageForm }} 
-              id={`collapse${pet.id}`}>
+              id={`collapse${pet._id}`}>
                 <div className="">
                   <ul className="list-group">
 
-                    {listRequest.filter((request) => request.petId === pet.id)
-                      .filter((request) => request.receiverID === ownerID)
+                    {listRequest === null ? "There is no request"
+                    : listRequest.filter((request) => request.petId === pet._id)
+                      .filter((request) => request.ownerId === loggedInID)
                       .map((request, index) => {
                         // console.log(request);
                         return (
@@ -443,6 +518,7 @@ const ManagePosting = () => {
       </div>
 
       {/* Check if user click EDIT button, the Edit form will be showed */}
+     
       {showEditForm === false ? "" : displayEditForm(petInfoModal)}
 
 

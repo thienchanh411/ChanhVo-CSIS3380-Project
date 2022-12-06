@@ -34,8 +34,8 @@ const ListPostingTab = ({listPet =[], adminDeletePost}) => {
                             .map((post, index) => {                                               
                                     return (
                                         <tr className="m-4 p-3" key={index}>
-                                            <th scope="row">{post.id}</th>
-                                            <td>{post.name}</td>
+                                            <th scope="row">{index + 1}</th>
+                                            <td>{post.petName}</td>
                                             <td>{post.breed}</td>
                                             <td>{post.age}</td>
                                             <td>{post.gender}</td>

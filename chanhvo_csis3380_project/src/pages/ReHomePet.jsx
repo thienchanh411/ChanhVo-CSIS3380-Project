@@ -2,11 +2,17 @@ import React from "react";
 import { useContext } from "react";
 import { useState } from "react";
 import { AppContext } from "../components/AppContext";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const RehomePet = () => {
 
+  const navigate = useNavigate();
+
   const {listPet, setListPet} = useContext(AppContext)
-  const{isLoggedIn} = useContext(AppContext);
+  const{isLoggedIn, loggedInID} = useContext(AppContext);
+  
+  const [addSuccess, setAddSuccess] = useState(false)
 
   const [petType, setPetType] = useState("");
   const [isSpayed, setIsSpayed] = useState("");
@@ -17,40 +23,98 @@ const RehomePet = () => {
   const [age, setAge] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState();
   const [description, setDescription] = useState("");
   const [diet, setDiet] = useState("");
 
-  const ownerId = 3;
+  const ownerId = loggedInID;
 
-  const handleAddNewPet = (event) => {
+  const handleAddNewPet = async (event) => {
     event.preventDefault();
     const status = "Active";
 
-    const newPetList = [...listPet, {
-      id : 6,
+    const urlAPI = "http://localhost:5000/api/pet"
+
+    const {data} = await axios.post(urlAPI, {
       ownerId, petType, isSpayed, rehomeReason, petName, breed, gender, age, size,
       color, image, description, diet, status
-    }]
-    console.log(newPetList);
-    setListPet(newPetList);
-    console.log(listPet);
+    });
 
-    setPetType("");
-    setIsSpayed("");
-    setRehomReason("");
-    setPetName("");
-    setBreed("");
-    setGender("");
-    setAge("");
-    setSize("");
-    setColor("");
-    setImage("");
-    setDescription("");
-    setDiet("");
+    console.log(data);
+
+    if(typeof data === "object"){
+        setAddSuccess(true);
+
+        const newPetList = [...listPet, {
+          _id : data._id,
+          ownerId, petType, isSpayed, rehomeReason, petName, breed, gender, age, size,
+          color, image, description, diet, status
+        }]
+        console.log(newPetList);
+        setListPet(newPetList);
+        console.log(listPet);
+    
+        setPetType("");
+        setIsSpayed("");
+        setRehomReason("");
+        setPetName("");
+        setBreed("");
+        setGender("");
+        setAge("");
+        setSize("");
+        setColor("");
+        setImage();
+        setDescription("");
+        setDiet("");
+    }
+
+    
 
 
   }
+
+     //* MODAL SHOW SUCCESSFUL REGISTRATION */
+     const displayPopupConfirm = () => {
+      return (
+
+          <div className="modal show fade" id="exampleModalToggle" aria-hidden="true"
+              aria-labelledby="exampleModalToggleLabel" tabIndex="-1"
+              style={{display: "block", backgroundColor: "rgba(0,0,0,0.8)"}}>
+              <div className="modal-dialog modal-dialog-centered">
+                  <div className="modal-content">
+                      <div className="modal-header row text-center">
+                          <h4 className="modal-title " id="exampleModalToggleLabel">Congratulation!</h4>
+                      </div>
+                      <div className="modal-body">
+                          <div className="d-container  align-items-center justify-content-center">
+                              <div className="row mx-auto my-4 justify-content-center">
+                                  <img src="../successIcon.png" alt="successIcon"
+                                  style={{maxHeight: "13vh", maxWidth : "13vh"}}/>
+                              </div>
+                              <div className="col text-center my-4">
+                                  <p className="fs-5">You've added a pet sucessully</p>
+                                  
+                              </div>
+                          </div>
+                          
+                      </div>
+                      <div className="modal-footer row justify-content-center">
+                          <button className="btn btn-primary" data-bs-target="#exampleModalToggle2" 
+                          style={{maxWidth: "15vh", fontWeight : "bold"}} onClick={()=>handleCloseConfirm()}
+                          data-bs-toggle="modal" data-bs-dismiss="modal">Okay</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      )
+  }
+
+  // HANDLE CLICK CLOSE MODAL
+  const handleCloseConfirm = () => {
+    setAddSuccess(false);
+    navigate("/manageposting");
+}
+
 // CHECK IF USER LOGGED IN, SHOW ALL CONTENT, ELSE, SHOW REQUIRE LOGIN
 if(isLoggedIn === false){
   return(
@@ -73,7 +137,7 @@ if(isLoggedIn === false){
             <div className="form-group row m-4 p-2">
               <label htmlFor="pet_type" className="col-md-4 col-form-label" style={{fontWeight: "bold"}}>Are you rehoming a dog, cat or other pet?</label>
               
-                <select className=" col-lg-8 border-dark" name="pet_type"
+                <select className=" col-lg-8 border-dark" name="pet_type" required
                 value={petType}
                 onChange={(event) => setPetType(event.target.value)} >
                   <option value="" defaultValue={"selected"} >Select One</option>
@@ -90,7 +154,7 @@ if(isLoggedIn === false){
             <label htmlFor="spayed_neutered" className="col-md-4 col-form-label" style={{fontWeight: "bold"}}>
               Is your pet spayed or neutered?</label>
             {/* <div className=" col"> */}
-              <select className="col-lg-8 border-dark" name="spayed_neutered" id="spayed_neutered"
+              <select className="col-lg-8 border-dark" name="spayed_neutered" id="spayed_neutered" required
               value={isSpayed}
               onChange={(event) => setIsSpayed(event.target.value)} >
                 <option data-eventlabel="unset" value="" defaultValue={"selected"}>Select One</option>
@@ -119,7 +183,7 @@ if(isLoggedIn === false){
           <div className="form-group row m-4 p-2">
             <label htmlFor="rehome_reason" className="col-md-4 col-form-label" style={{fontWeight: "bold"}}>
               Why do you need to rehome your pet?</label>
-            <select className="col-lg-8 border-dark" name="rehome_reason" 
+            <select className="col-lg-8 border-dark" name="rehome_reason" required
             value={rehomeReason}
             onChange={(event) => setRehomReason(event.target.value)} >
               <option value="" defaultValue={"selected"}>Select One</option>
@@ -144,20 +208,20 @@ if(isLoggedIn === false){
 
           <div className="form-group row m-4 p-2">
             <label htmlFor="petName" className="col-md-4 col-form-label" style={{fontWeight: "bold"}}>Your Pet name</label>
-            <input className="col-lg-8 " type="name" id="petNameInput" placeholder="Your Pet name" 
+            <input className="col-lg-8 " type="name" id="petNameInput" placeholder="Your Pet name" required
             value={petName}
             onChange={(event) => setPetName(event.target.value)} />
           </div>
 
           <div className="form-group row m-4 p-2">
             <label htmlFor="breed" className="col-md-4 col-form-label" style={{fontWeight: "bold"}}>Breed</label>
-            <input className="col-lg-8 " type="name" name="breed" id="breedInput" 
+            <input className="col-lg-8 " type="name" name="breed" id="breedInput" required
             value={breed}
             onChange={(event) => setBreed(event.target.value)} />
           </div>
           <div className="form-group row m-4 p-2">
             <label htmlFor="gender" className="col-md-4 col-form-label" style={{fontWeight: "bold"}}>Gender</label>
-            <select className="col-lg-8 border-dark" name="gender" data-error-message="Select Gender"
+            <select className="col-lg-8 border-dark" name="gender" data-error-message="Select Gender" required
             value={gender}
             onChange={(event) => setGender(event.target.value)} >
               <option value="">Gender</option>
@@ -167,11 +231,12 @@ if(isLoggedIn === false){
           </div>
           <div className="form-group row m-4 p-2">
             <label htmlFor="age" className="col-md-4 col-form-label" style={{fontWeight: "bold"}}>Age</label>
-            <select className="col-lg-8 border-dark" name="age" data-error-message="Select Age"
+            <select className="col-lg-8 border-dark" name="age" data-error-message="Select Age" required
             value={age}
             onChange={(event) => setAge(event.target.value)} >
-              <option value="">0-6 months</option>
-              <option value="puppy">6-12 months</option>
+              <option value="">Select one</option>
+              {/* <option value="">0-6 months</option> */}
+              <option value="puppy">0-12 months</option>
               <option value="young">1-3 years</option>
               <option value="adult">3-7 years</option>
               <option value="senior">Over 7 years</option>
@@ -179,7 +244,7 @@ if(isLoggedIn === false){
           </div>
           <div className="form-group row m-4 p-2">
             <label htmlFor="size_weight" className="col-md-4 col-form-label" style={{fontWeight: "bold"}}>Size</label>
-            <select className="col-lg-8 border-dark" name="size_weight" data-error-message="Select Size"
+            <select className="col-lg-8 border-dark" name="size_weight" data-error-message="Select Size" required
             value={size}
             onChange={(event) => setSize(event.target.value)} >
               <option value="">Size</option>
@@ -193,16 +258,17 @@ if(isLoggedIn === false){
           </div>
           <div className="form-group row m-4 p-2">
             <label htmlFor="color" className="col-md-4 col-form-label" style={{fontWeight: "bold"}}>Color</label>
-            <input className="col-lg-8 " type="text" id="colorInput" 
+            <input className="col-lg-8 " type="text" id="colorInput" required
             value={color}
             onChange={(event) => setColor(event.target.value)} />
           </div>
           <div className="form-group row m-4 p-2">
             <label htmlFor="formFileMultiple" className="col-md-4 col-form-label" style={{fontWeight: "bold"}}>Upload the picture of your pet</label>
-            <input className="col-lg-8 " type="file" id="formFileMultiple"
+            <input className="col-lg-8 " type="file" id="formFileMultiple" required
               accept="image/x-png,image/gif,image/jpeg" 
               value={image}
               onChange={(event) => setImage(event.target.value)} />
+
           </div>
           <div>
             <div className="form-group row m-4 p-2">
@@ -232,7 +298,8 @@ if(isLoggedIn === false){
       </form>
       </div>
       
-
+      {/* CHECK ADDSUCCESS TO SHOW MODAL CONFIRMATION */}
+      {addSuccess === true ? displayPopupConfirm() : ""}
     </div>
   );
 }
