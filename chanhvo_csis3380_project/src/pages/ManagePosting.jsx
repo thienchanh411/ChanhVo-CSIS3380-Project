@@ -17,7 +17,7 @@ const ManagePosting = () => {
 
     useEffect(() => {
     const urlAPI = `http://localhost:5000/api/request/toowner/${loggedInID}`;
-    console.log("Api request",urlAPI)
+    // console.log("Api request",urlAPI)
     if(loggedInID === ""){
       return
     }
@@ -73,7 +73,6 @@ const ManagePosting = () => {
     }
 
     const manageForm = document.getElementById(`collapse${_id}`)
-    console.log(manageForm);
     manageForm.style.display = styleManageForm;
   }
 
@@ -87,7 +86,7 @@ const ManagePosting = () => {
     const age = document.getElementById("age").value
     const size = document.getElementById("size").value
     const color = document.getElementById("color").value
-    let image = document.getElementById("uploadPicture").value
+    let imageUpload = document.getElementById("uploadPicture");
     const description = document.getElementById("description").value
     const diet = document.getElementById("diet").value
     const rehomeReason = document.getElementById("rehomeReason").value
@@ -95,12 +94,19 @@ const ManagePosting = () => {
     const status = "Active";
 
     // image === "" ? (image = pet.image) : image = document.getElementById("uploadPicture").value
-    console.log("Click edit pet profile")
     // event.preventDefault();
 
-    if(image===""){
-      image = pet.image;
+    let image = "";
+    const setImage = () => {
+      if (imageUpload.files.length===0){
+       return image = pet.image;
+       
+    }else{ 
+      return image = imageUpload.files[0].name }
     }
+    setImage()
+    console.log("Image :", image)
+
     const showNotification = document.getElementById("showResultUpdatePet");
     const urlAPI = `http://localhost:5000/api/pet/update/${pet._id}`;
     console.log("Url when click update",urlAPI);
@@ -369,7 +375,7 @@ const ManagePosting = () => {
         ? {...petElem, status : "Adopted"} : {...petElem});
     
     setListPet(newPetList);
-    console.log(listPet);
+    // console.log(listPet);
 
     const updatedReqList = listRequest.filter((requestElem) => request.petId === requestElem.petId)
     .map((requestElem) => (requestElem._id === request._id) 
@@ -432,11 +438,11 @@ const ManagePosting = () => {
       {/* {console.log("Set new list request",listRequest)} */}
       <div className="row m-auto">
         {listPet.length === 0 ? (<h4>There is no Posting</h4>) : ("")}
-        {listPet.filter((pet) => pet.status === "Active")
+        {listPet.filter((pet) => pet.status !== "InActive")
         .map((pet, index) => {
           return (
             < div  key={index}>
-              <div className="row-lg col-md mx-4 px-5 py-3 justify-content-center fs-4" id="imgPetSearch">
+              <div className="row-lg col-md mx-4 px-5 py-3 justify-content-center fs-5" id="imgPetSearch">
                 <div className="row justify-content-center 
                 border border-info rounded shadow-lg p-1 mb-5 bg-body">
                   <div className="col-4 align-content-center my-4">
@@ -470,8 +476,8 @@ const ManagePosting = () => {
                       </div>
                       <div className="row mx-auto justify-content-center my-5">
                         <button className="btn btn-success " style={{ width: 120 }}
-                          // data-bs-toggle="collapse"
-                          // data-bs-target="#collapseManageForm"
+                          data-bs-toggle={`collapse`}
+                          data-bs-target={`#collapse${pet._id}`}
                           onClick={() => handleManageBtn(pet._id)}
                         >Manage</button>
                       </div>
@@ -487,12 +493,13 @@ const ManagePosting = () => {
               </div>
               {/* Collapse managing board */}
               {/* <div className="collapse row-lg-8 mx-5" id={`collapse${pet.id}`}> */}
-              <div className=" row-lg-8 mx-5" style={{ display: styleManageForm }} 
+              <div className=" row-lg-8 mx-5" 
+              // style={{ display: styleManageForm }} 
               id={`collapse${pet._id}`}>
                 <div className="">
                   <ul className="list-group">
 
-                    {listRequest === null ? "There is no request"
+                    {listRequest === null ? <p>There is no request</p>
                     : listRequest.filter((request) => request.petId === pet._id)
                       .filter((request) => request.ownerId === loggedInID)
                       .map((request, index) => {

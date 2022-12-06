@@ -1,16 +1,18 @@
 // import axios from "axios";
 const ListManageRequest = ({senderId, petId, _id, requestTime, status, responseTime,
     handleAcceptRequest , handleRejectRequest}) => {
-    // const [showGroupResponseBtn, setShowGroupResponseBtn] = useState('row');
-    // const {listRequest, setListRequest} = useContext(AppContext);
-    // const {disableGroupResponseBtn,setDisableGroupResponseBtn} = useContext(AppContext);
     
     let showButton = '';
-
-    // const urlAPI = `http://localhost:5000/api/profile/viewuser/${senderId}`
+    let acceptedBG = '';
     
-    // const {data} = await axios.get(urlAPI);
-    // console.log(data);
+    const showBGAccept = () =>{
+        if(status === "Accepted"){
+        return acceptedBG = "#2FC47A"
+        }else if (status === "Rejected"){
+            return acceptedBG = "#E3E7E5"
+            }
+    }
+    showBGAccept()
 
     const showOrHideButton = () =>{
 
@@ -27,20 +29,21 @@ const ListManageRequest = ({senderId, petId, _id, requestTime, status, responseT
 //    ? setShowGroupResponseBtn('d-none') : setShowGroupResponseBtn('row')
 
     return (
-        <li className="list-group-item ml-4">
-            <div className='row justify-content-left '>
+        <li className="list-group-item ml-4 fs-5" >
+            <div className='row justify-content-left ' >
                 {/* <p className='col-6 ' >Request from {request.senderID} at {request.requestTime}</p> */}
                 <div className='col-5 ' >
                     <p >Request from {senderId} </p>
                     <p>at {requestTime}</p>
                 </div>
                 <div className="col-5">
+                    
+                    <p>Status: <span style={{fontWeight: "bold"}}>{status}</span> </p>
                     <p>Responsed: {responseTime}</p>
-                <p>Status: {status}</p>
                 </div>
                 
-                <span className='col-2'>
-                    <div>
+                <span className='col-2'style={{backgroundColor: `${acceptedBG}`}}>
+                    <div >
 
                         {/* Check if status rejected or accepted then hide the response btn */}
                         {/* <div className={showButton} id={`groupResponseBtn${request.requestId}`}> */}

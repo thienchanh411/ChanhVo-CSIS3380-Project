@@ -38,7 +38,7 @@ function MyProfilePage() {
                 setCity(res.data.city);
                 setProvince(res.data.province);
                 setPostcode(res.data.postcode);
-                // setFirstname(res.data.firstname);
+                // setPassword(res.data.password);
                 // setFirstname(res.data.firstname);
 
             }

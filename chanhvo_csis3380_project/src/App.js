@@ -16,6 +16,7 @@ const App = () => {
   const [listUser, setListUser] = useState(userInfo);
   const [loggedInID, setLoggedInID] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [roleAdmin, setRoleAdmin] = useState(false)
 
   console.log("Logged in ID on Mainpage Client:", loggedInID);
   // console.log("Logged in status on Mainpage Client:", isLoggedIn);
@@ -94,6 +95,7 @@ const App = () => {
         listAvailablePet, setListAvailablePet,
         listRequest, setListRequest,
         listUser, setListUser,
+        roleAdmin, setRoleAdmin,
         loggedInID, setLoggedInID, isLoggedIn, setIsLoggedIn
       }}>
         <NavigationBar />

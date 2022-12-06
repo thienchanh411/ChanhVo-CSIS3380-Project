@@ -6,6 +6,37 @@ const app = express.Router();
 const urlMongoDB = "mongodb://localhost:27017/rehomepetDB";
 const Pet = require("../models/PetModel.js");
 
+// USE MULTER FOR UPLOAD FILE
+const multer = require("multer");
+const path = require("path");
+
+var storage = multer.diskStorage({
+    destination: function (request, file, callback) {
+        callback(null, "./public/data/uploads/");
+    },
+    filename: function (request, file, callback) {
+        fileName=file.originalname;
+        callback(null, file.originalname);
+    }
+  });
+
+const imageUpload = multer({storage : storage})
+
+
+// var imageUpload = multer({
+//     storage: imageStorage,
+//     limits: {
+//       fileSize: 40000000 // 42000000 Bytes around 40 MB
+//     },
+//     fileFilter(req, file, callback) {
+//       if (!file.originalname.match(/\.(png|jpg)$/)) { 
+//          // upload only png and jpg format
+//          return cb(new Error('Please upload a Image'))
+//        }
+//      callback(undefined, true)
+//   }
+// })
+
 // Get ALL request for pet
 app.get("/", async (req, res) => {
 
@@ -37,7 +68,7 @@ app.get("/toowner/:ownerId", async(req, res) => {
         // if only need ownerId 
         //Pet.find({ownerId: {$eq : ownerId}}, (err, pets) => {})
 
-        Pet.find({$and: [{ownerId: {$eq : ownerId}} , {status: {$eq: "Active"}} ]}, (err, pets) => {
+        Pet.find({$and: [{ownerId: {$eq : ownerId}} , {status: {$ne: "InActive"}} ]}, (err, pets) => {
             if(err) console.log("Error when get pet after connect to DB", err);
             else{
                 console.log("get pets successful", pets);
@@ -62,7 +93,9 @@ app.get("/touser/:userid", async(req, res) => {
         //Pet.find({ownerId: {$eq : ownerId}}, (err, pets) => {})
 
         Pet.find({$and: [{ownerId: {$ne : userid}} , 
-                    {$or: [{status: {$eq: "Active"}},  {status: {$eq: "Adopted"}}]}]}, (err, pets) => {
+                    {$or: [{status: {$eq: "Active"}},  
+                    // {status: {$ne: "Adopted"}}
+                ]}]}, (err, pets) => {
             if(err) console.log("Error when get pet after connect to DB", err);
             else{
                 // console.log("get pets successful", pets);
@@ -77,13 +110,16 @@ app.get("/touser/:userid", async(req, res) => {
 })
 
 // CREATE A NEW PET
-
 app.post("/", async (req, res) => {
-    const {petName, ownerId, petType, breed, isSpayed, rehomeReason, gender, age, size, image, color,
-    description, diet, status} = req.body
+    const {petName, ownerId, petType, breed, isSpayed, rehomeReason, gender, age, size, color,
+    description, image, diet, status} = req.body
 
-    console.log(petName, ownerId, petType, breed, isSpayed, rehomeReason, gender, age, size, image, color,
-        description, diet, status);
+    // console.log(image.replace("C:\\fakepath\\", ""))
+    console.log(image)
+
+    console.log(petName, ownerId, petType, breed, isSpayed, rehomeReason, gender, age, size, color,
+        description, image,diet, status);
+        // description, image.replace("C:\\fakepath\\", ""),diet, status);
     
     try{
        
@@ -123,6 +159,52 @@ app.post("/", async (req, res) => {
         console.log("Error from post API pet", err);
     }
 })
+
+// app.post("/", async (req, res) => {
+//     const {petName, ownerId, petType, breed, isSpayed, rehomeReason, gender, age, size, image, color,
+//     description, diet, status} = req.body
+
+//     console.log(petName, ownerId, petType, breed, isSpayed, rehomeReason, gender, age, size, image, color,
+//         description, diet, status);
+    
+//     try{
+       
+//         const newPet = new Pet({
+//             petName, 
+//             ownerId,
+//             petType,
+//             breed, 
+//             isSpayed,
+//             rehomeReason, 
+//             gender, 
+//             age, 
+//             size, 
+//             color,
+//             image, 
+//             description, 
+//             diet, 
+//             status
+            
+//         });
+
+//         await mongoose.connect(urlMongoDB);
+//         console.log("Connnected from post Pet API");
+//         newPet.save(err => {
+//             if(err){
+//                 console.log("Error when post a new pet", err);
+//                 res.send("Error when post a new pet");
+//             } 
+//             else {
+//                 console.log("Added new user successfully")
+//                 res.send(newPet);
+//                 mongoose.connection.close();
+//             }
+//         })
+
+//     }catch (err) {
+//         console.log("Error from post API pet", err);
+//     }
+// })
 
 // UPDATE PET INFORMATION
 

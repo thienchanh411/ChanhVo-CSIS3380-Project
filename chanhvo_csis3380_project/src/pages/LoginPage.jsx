@@ -16,19 +16,6 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const urlAPI = "http://localhost:5000/api/login";
-
-  //   axios.get(urlAPI)
-  //     .then((res) => {
-  //       console.log("Show result on Login Page", res.data);
-  //       setLoggedInID(res.data._id)
-  //     })
-  //     .catch((err) => {
-  //       console.log("Error when fetch data on Login page", err);
-  //     })
-  // }, []);
-
   const navigateHomePage = () => {
     navigate("/");
   }
@@ -39,7 +26,6 @@ const Login = () => {
 
     const displayError = document.getElementById("displayError");
 
-    console.log(email, password)
     const urlAPI = "http://localhost:5000/api/login";
     const {data} = await axios.post(urlAPI, {
       email, password

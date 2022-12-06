@@ -85,18 +85,6 @@ const AdoptPet = () => {
     }else{
       console.log("Fail to add new request");
     }
-
-    // const newRequestList = [...listRequest, {
-    //   requestID: currentRequestID,
-    //   senderID: loggedInID,
-    //   ownerId: pet.ownerID,
-    //   requestTime: requestTime,
-    //   responseTime: "",
-    //   status: status
-    // }]
-
-    
-    // const requestList = requestInfo;
     
   }
 
@@ -114,15 +102,43 @@ const AdoptPet = () => {
 
               </div>
               <div className="modal-body">
-                <p>Name: {pet.petName}</p>
-                <p>Breed: {pet.breed}</p>
-                <p>Gender: {pet.gender}</p>
-                <p>Size: {pet.size}</p>
-                <p>Spayed: {(pet.isSpayed === "true") ? "Yes" : "No"}</p>
-                <p>Age: {pet.age}</p>
-                <p>diet: {pet.diet}</p>
-                <p>Reason Rehome: {pet.rehomeReason}</p>
-                <p>Description: {pet.description}</p>
+                <div className="row">
+                  <p className="col-3" >Name: <span></span></p>
+                  <p className="col" style={{fontWeight: "bold"}}>{pet.petName}</p>
+                </div>
+                <div className="row">
+                  <p className="col-3" >Breed: <span></span></p>
+                  <p className="col" style={{fontWeight: "bold"}}>{pet.breed}</p>
+                </div>
+                <div className="row">
+                  <p className="col-3" >Gender: <span></span></p>
+                  <p className="col" style={{fontWeight: "bold"}}>{pet.gender}</p>
+                </div>
+                <div className="row">
+                  <p className="col-3" >Size: <span></span></p>
+                  <p className="col" style={{fontWeight: "bold"}}>{pet.size}</p>
+                </div>
+                <div className="row">
+                  <p className="col-3" >Spayed: <span></span></p>
+                  <p className="col" style={{fontWeight: "bold"}}>
+                  {(pet.isSpayed === "true") ? "Yes" : "No"}</p>
+                </div>
+                <div className="row">
+                  <p className="col-3" >Age: <span></span></p>
+                  <p className="col" style={{fontWeight: "bold"}}>{pet.age}</p>
+                </div>
+                <div className="row">
+                  <p className="col-3" >Diet: <span></span></p>
+                  <p className="col" style={{fontWeight: "bold"}}>{pet.diet}</p>
+                </div>
+                <div className="row">
+                  <p className="col-3" >Reason Rehome: <span></span></p>
+                  <p className="col" style={{fontWeight: "bold"}}>{pet.rehomeReason}</p>
+                </div>
+                <div className="row">
+                  <p className="col-3" >Description: <span></span></p>
+                  <p className="col" style={{fontWeight: "bold"}}>{pet.description}</p>
+                </div>
 
               </div>
               <div className="modal-footer">
@@ -165,7 +181,7 @@ const AdoptPet = () => {
                   <div className="row">
                     <img className="mx-auto mb-3" src={pet.image} alt="pet  1" style={{ height: 350, width: 350 }} />
                   </div>
-                  <div className="row ps-4 fs-4">
+                  <div className="row ps-4 fs-5">
                     <p>Name: {pet.petName}</p>
                     {/* <p>Type: {pet.petType}</p> */}
                     <p>Breed: {pet.breed}</p>
@@ -211,7 +227,6 @@ const AdoptPet = () => {
             )
           })}
         </div>
-        {console.log(modalInfo)}
 
         {/* Display modal to show Pet information */}
 

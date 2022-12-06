@@ -23,7 +23,7 @@ const RehomePet = () => {
   const [age, setAge] = useState("");
   const [size, setSize] = useState("");
   const [color, setColor] = useState("");
-  const [image, setImage] = useState();
+  // const [image, setImage] = useState();
   const [description, setDescription] = useState("");
   const [diet, setDiet] = useState("");
 
@@ -32,8 +32,11 @@ const RehomePet = () => {
   const handleAddNewPet = async (event) => {
     event.preventDefault();
     const status = "Active";
+    const image = document.getElementById("imageUploaded").files[0].name;
 
-    const urlAPI = "http://localhost:5000/api/pet"
+    console.log(document.getElementById("imageUploaded").files[0].name)
+
+    const urlAPI = "http://localhost:5000/api/pet/"
 
     const {data} = await axios.post(urlAPI, {
       ownerId, petType, isSpayed, rehomeReason, petName, breed, gender, age, size,
@@ -63,7 +66,7 @@ const RehomePet = () => {
         setAge("");
         setSize("");
         setColor("");
-        setImage();
+        // setImage();
         setDescription("");
         setDiet("");
     }
@@ -126,7 +129,7 @@ if(isLoggedIn === false){
   return (
     <div className="">
       <div className="container w-90 mx-auto  p-8 shadow-sm">
-        <form method="post" action="/pet" onSubmit={handleAddNewPet}
+        <form method="post" action="/api/pet/add" onSubmit={handleAddNewPet} encType="multipart/form-data"
         data-multi-step className="multi-step-form m-8 p-8 fs-4">
         {/* <div className="card" data-step> */}
           <div className="">
@@ -263,11 +266,13 @@ if(isLoggedIn === false){
             onChange={(event) => setColor(event.target.value)} />
           </div>
           <div className="form-group row m-4 p-2">
-            <label htmlFor="formFileMultiple" className="col-md-4 col-form-label" style={{fontWeight: "bold"}}>Upload the picture of your pet</label>
-            <input className="col-lg-8 " type="file" id="formFileMultiple" required
-              accept="image/x-png,image/gif,image/jpeg" 
-              value={image}
-              onChange={(event) => setImage(event.target.value)} />
+            <label htmlFor="formFileMultiple" className="col-md-4 col-form-label" style={{fontWeight: "bold"}}>
+              Upload the picture of your pet</label>
+            <input className="col-lg-8 " type="file" required id="imageUploaded"
+              accept="image/*" 
+              // value={image}
+              // onChange={(event) => setImage(event.target.value)} 
+              />
 
           </div>
           <div>

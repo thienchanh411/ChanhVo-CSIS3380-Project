@@ -42,7 +42,7 @@ const NavigationBar = () => {
               navbarScroll id="customNavbar"
             >
               <Link className="nav-link" to="/">Home</Link>
-              <Link className="nav-link" to="admin">Admin</Link>
+              {/* <Link className="nav-link" to="admin">Admin</Link> */}
               
               <Link className="nav-link" to="rehomepet">Rehome Pet</Link>
               <Link className="nav-link" to="adoptpet">Adopt Pet</Link>
@@ -53,13 +53,13 @@ const NavigationBar = () => {
 
               {isLoggedIn ? (<NavDropdown title="My Account" id="navbarScrollingDropdown">
                 {/* <NavDropdown.Item> */}
-                  <Link className="nav-link" to={`profile/${loggedInID}`}>My Profile</Link>
+                  <Link className="nav-link fs-5" to={`profile/${loggedInID}`}>My Profile</Link>
                 {/* </NavDropdown.Item>
                 <NavDropdown.Item > */}
-                  <Link className="nav-link" to="/manageposting">Manage Posting</Link>
+                  <Link className="nav-link fs-5" to="/manageposting">Manage Posting</Link>
                 {/* </NavDropdown.Item> */}
                 <NavDropdown.Divider />
-                <Link className="nav-link" to="logout">
+                <Link className="nav-link fs-5" to="logout">
                   <button onClick={handleLoggout}>Logout</button>
                   </Link>
                 {/* <NavDropdown.Item href="logout">
