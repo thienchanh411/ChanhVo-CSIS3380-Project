@@ -2,6 +2,7 @@ const express = require('express');
 const app = express.Router();
 const mongoose = require("mongoose");
 const User = require("../models/UserModel.js");
+const bcrypt = require('bcrypt');
 
 const urlMongoDB = "mongodb://localhost:27017/rehomepetDB";
 
@@ -44,37 +45,64 @@ app.post("/", async (req, res) =>  {
     const status = true;
     console.log(email, password, firstname, lastname, phone, street, city,province, postcode)
     
-    let validEmail = "";
+    async function generateHash(password) {
+        return bcrypt.hash(password, 12);
+    }
 
     try{
         
         await mongoose.connect(urlMongoDB);
         console.log("Connected to MongoDB");
-  
-        console.log("Approproate email")
-            const user1 = new User({
-                email,
-                password,
-                firstname ,
-                lastname ,
-                phone,
-                street,
-                city,
-                province,
-                postcode,
-                status,
+
+        generateHash(password)
+            .then((hash) => {
+
+                const newUser = new User ({
+                    firstname, lastname, email, phone, street, city, province,
+                    postcode, password: hash, status
+                })
+
+                console.log("Password hash: ", newUser)
+                newUser.save(err=> {
+                        if(err) {
+                            console.log("Error when Post request", err);
+                            res.send("Error when add new user")
+                        }else {
+                            console.log("Added new user successfully")
+                            res.send(newUser);
+                            mongoose.connection.close();
+                        }
+                    })
+            })
+            .catch((error) => {
+                // return next(error);
             });
-            await mongoose.connect(urlMongoDB);
-            user1.save(err=> {
-            if(err) {
-                console.log("Error when Post request", err);
-                res.send("Error when add new user")
-            }else {
-                console.log("Added new user successfully")
-                res.send(user1);
-                mongoose.connection.close();
-            }
-        })
+  
+        // console.log("Approproate email")
+        //     const user1 = new User({
+        //         email,
+        //         password,
+        //         firstname ,
+        //         lastname ,
+        //         phone,
+        //         street,
+        //         city,
+        //         province,
+        //         postcode,
+        //         status,
+        //     });
+        //     // await mongoose.connect(urlMongoDB);
+
+        //     user1.save(err=> {
+        //     if(err) {
+        //         console.log("Error when Post request", err);
+        //         res.send("Error when add new user")
+        //     }else {
+        //         console.log("Added new user successfully")
+        //         res.send(user1);
+        //         mongoose.connection.close();
+        //     }
+        // })
 
     }catch (error) {
         console.log("Error when post in api/register ", error)
