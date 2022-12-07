@@ -151,7 +151,7 @@ const ManagePosting = () => {
         <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
           <div className="modal-content">
             <div className="modal-header">
-              <h5 className="modal-title" id="editPostingFormModalTitle">EDIT POSTING</h5>
+              <h5 className="modal-title" id="editPostingFormModalTitle">EDIT PET INFORMATION</h5>
 
             </div>
             <div className="modal-body">
@@ -434,7 +434,9 @@ const ManagePosting = () => {
   } else if (isLoggedIn === true)
   {return (
     <>
-      <h2>This Page for Manage Adopt Request</h2>
+        <h1 className="text-center">
+          You can manage your pet in here
+        </h1>
       {/* {console.log("Set new list request",listRequest)} */}
       <div className="row m-auto">
         {listPet.length === 0 ? (<h4>There is no Posting</h4>) : ("")}

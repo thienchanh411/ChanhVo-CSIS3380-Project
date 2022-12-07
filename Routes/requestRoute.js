@@ -149,7 +149,7 @@ app.put("/byowner/reject/:id/:petId", async(req, res) => {
     
     try{
         await mongoose.connect(urlMongoDB);
-        console.log("Connected to DB when update request");
+        console.log("Connected to DB when update reject request");
         // Request.updateOne(
         //     {_id: _id},
         //     {responseTime, status : "Accepted"},

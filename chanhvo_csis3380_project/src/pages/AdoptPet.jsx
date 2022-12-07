@@ -13,6 +13,8 @@ const AdoptPet = () => {
   const [showModal, setShowModal] = useState(false)
   const [modalInfo, setModalInfo] = useState({})
 
+  const petSizeArr = ["lest than 5 lbs", "6 - 10 lbs", "11 - 20 lbs", "21 - 50 lbs", 
+        "51 - 90 lbs", "more than 90 lbs"]
   // GET ALL AVAILABLE PET FOR USER
   useEffect(() => {
     const urlAPI = `http://localhost:5000/api/pet/touser/${loggedInID}`;
@@ -34,11 +36,11 @@ const AdoptPet = () => {
 
   // Click button Detail to show more information
   const showDetail = (pet) => {
-    console.log(pet);
+    // console.log(pet);
     setShowModal(true);
     // Object.assign(pet, ...modalInfo)
     setModalInfo(pet);
-    console.log(modalInfo)
+    // console.log(modalInfo)
     // showModal===true ? displayModal(pet): (<p></p>);
 
   }
@@ -116,7 +118,8 @@ const AdoptPet = () => {
                 </div>
                 <div className="row">
                   <p className="col-3" >Size: <span></span></p>
-                  <p className="col" style={{fontWeight: "bold"}}>{pet.size}</p>
+                  <p className="col" style={{fontWeight: "bold"}}>
+                  {petSizeArr[pet.size -1]}</p>
                 </div>
                 <div className="row">
                   <p className="col-3" >Spayed: <span></span></p>
@@ -166,9 +169,9 @@ const AdoptPet = () => {
 
     return (
       // <>
-      <div className="overflow-hidden shadow" >
-        <h1>
-          This page for finding pets.
+      <div className="overflow-hidden shadow " >
+        <h1 className="text-center">
+          You can find your new pet in here
         </h1>
         <div className="row m-auto">
           {listAvailablePet.length === 0 ? (<h4 className="text-center">There is no pet</h4>) : ("")}
