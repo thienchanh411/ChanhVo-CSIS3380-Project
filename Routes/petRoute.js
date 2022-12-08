@@ -22,7 +22,6 @@ var storage = multer.diskStorage({
 
 const imageUpload = multer({storage : storage})
 
-
 // var imageUpload = multer({
 //     storage: imageStorage,
 //     limits: {

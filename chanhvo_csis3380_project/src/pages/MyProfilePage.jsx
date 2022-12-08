@@ -113,7 +113,9 @@ function MyProfilePage() {
                                     
                                     <div className="container m-3">
                                         <div className="form-group row m-3">
-                                            <label htmlFor="firstname" className="col-md-3 col-form-label">First Name</label>
+                                            <label htmlFor="firstname" className="col-md-3 col-form-label"
+                                            style={{fontWeight: "bold"}}>
+                                                First Name</label>
                                             <div className="col-md">
                                                 <input type="text" className="form-control fs-5" id="firstname"
                                                     required="true" placeholder="First Name" 
@@ -123,7 +125,8 @@ function MyProfilePage() {
 
                                         </div>
                                         <div className="form-group row m-3">
-                                            <label className="col-md-3 col-form-label">Last Name</label>
+                                            <label className="col-md-3 col-form-label"
+                                            style={{fontWeight: "bold"}}>Last Name</label>
                                             <div className="col-md">
                                                 <input type="text" className="col-9 form-control fs-5" id="lastname"
                                                     placeholder="Last Name" required
@@ -133,7 +136,8 @@ function MyProfilePage() {
 
                                         </div>
                                         <div className="form-group row m-3">
-                                            <label className="col-md-3 col-form-label">Email</label>
+                                            <label className="col-md-3 col-form-label" style={{fontWeight: "bold"}}
+                                            >Email</label>
                                             <div className="col-md">
                                                 <input type="email" className="form-control fs-5" id="email"
                                                     placeholder="Email" required
@@ -143,7 +147,8 @@ function MyProfilePage() {
 
                                         </div>
                                         <div className="form-group row m-3">
-                                            <label className="col-md-3 col-form-label">Phone Number</label>
+                                            <label className="col-md-3 col-form-label"
+                                            style={{fontWeight: "bold"}}>Phone Number</label>
                                             <div className="col-md">
                                                 <input type="phone" className="form-control fs-5" id="phone"
                                                     placeholder="Phone Number" required
@@ -153,7 +158,8 @@ function MyProfilePage() {
 
                                         </div>
                                         <div className="form-group row m-3">
-                                            <label className="col-md-3 col-form-label">Street</label>
+                                            <label className="col-md-3 col-form-label"
+                                            style={{fontWeight: "bold"}}>Street</label>
                                             <div className="col-md">
                                                 <input type="text" className="form-control fs-5" id="street"
                                                     placeholder="Street" required
@@ -163,7 +169,8 @@ function MyProfilePage() {
 
                                         </div>
                                         <div className="form-group row m-3">
-                                            <label className="col-md-3 col-form-label">City</label>
+                                            <label className="col-md-3 col-form-label"
+                                            style={{fontWeight: "bold"}}>City</label>
                                             <div className="col-md">
                                                 <input type="text" className="form-control fs-5" id="city"
                                                     placeholder="City" required
@@ -173,7 +180,8 @@ function MyProfilePage() {
 
                                         </div>
                                         <div className="form-group row m-3">
-                                            <label className="col-sm-3 col-form-label">Province</label>
+                                            <label className="col-sm-3 col-form-label"
+                                            style={{fontWeight: "bold"}}>Province</label>
                                             <div className="col-md">
                                                 <input type="text" className="form-control fs-5" id="province"
                                                     placeholder="Province" required
@@ -183,7 +191,8 @@ function MyProfilePage() {
 
                                         </div>
                                         <div className="form-group row m-3">
-                                            <label className="col-sm-3 col-form-label">Postal Code</label>
+                                            <label className="col-sm-3 col-form-label"
+                                            style={{fontWeight: "bold"}}>Postal Code</label>
                                             <div className="col-md">
                                                 <input type="text" className="form-control fs-5" id="postcode"
                                                     placeholder="PostalCode" required
@@ -204,7 +213,8 @@ function MyProfilePage() {
                                         </div>
                                     
                                     <div className="form-group row m-3">
-                                        <label htmlFor="inputNewPassword" className="col-sm-3 col-form-label">New Password</label>
+                                        <label htmlFor="inputNewPassword" className="col-sm-3 col-form-label"
+                                        style={{fontWeight: "bold"}}>New Password</label>
                                         <div className="col-md">
                                             <input type="password" className="form-control fs-5" id="profilePostalCode"
                                                 placeholder="New Password" required
@@ -214,7 +224,8 @@ function MyProfilePage() {
 
                                     </div>
                                     <div className="form-group row m-3">
-                                        <label htmlFor="inputRetypeNewPassword" className="col-sm-3 col-form-label">ReType New Password</label>
+                                        <label htmlFor="inputRetypeNewPassword" className="col-sm-3 col-form-label"
+                                        style={{fontWeight: "bold"}}>ReType New Password</label>
                                         <div className="col-md">
                                             <input type="password" className="form-control fs-5" id="profilePostalCode"
                                                 placeholder="Confirm New Password" required

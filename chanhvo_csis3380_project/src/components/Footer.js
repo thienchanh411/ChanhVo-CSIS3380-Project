@@ -49,7 +49,8 @@ class Footer extends Component {
 
 <div className="footer-copyright text-center py-3">References: <br/>
   <a href="https://getbootstrap.com/docs/4.1/getting-started/introduction/"> getbootstrap.com</a> <br/>
-  <a href="https://rehome.adoptapet.com/"> rehome.adoptapet.com</a>
+  <a href="https://rehome.adoptapet.com/"> rehome.adoptapet.com</a><br/>
+  <a href="https://www.istockphoto.com/"> istockphoto</a>
 </div>
 </footer>
 

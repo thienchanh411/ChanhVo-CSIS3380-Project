@@ -56,7 +56,7 @@ const Login = () => {
               >
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label className="w-auto p-3 row justify-content-start">Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email"
+                <Form.Control type="email" placeholder="Enter email" className="fs-5"
                   value={email}
                   onChange={(event) => setEmail(event.target.value)} />
                 <Form.Text className="text-muted">
@@ -66,7 +66,7 @@ const Login = () => {
 
               <Form.Group className="mb-3" controlId="formBasicPassword">
                 <Form.Label className="w-auto p-3 row justify-content-start">Password</Form.Label>
-                <Form.Control type="password" placeholder="Password"
+                <Form.Control type="password" placeholder="Password" className="fs-5"
                   value={password}
                   onChange={(event) => setPassword(event.target.value)} />
               </Form.Group>
@@ -74,7 +74,7 @@ const Login = () => {
                 <Form.Check type="checkbox" label="Check me out" />
               </Form.Group> */}
               <div className="mb-3 row justify-content-center">
-                <Button className="col-sm-5" variant="primary" type="submit">
+                <Button className="col-sm-5 fs-5" variant="primary" type="submit">
                   Submit
                 </Button>
               </div>
@@ -83,7 +83,8 @@ const Login = () => {
               </div>
 
             </Form>
-            <p>Don't have an account, <Link className="nav-link" to="/register"> please register</Link></p>
+            <p className="fs-5">Don't have an account, <Link className="nav-link fs-5" 
+                to="/register" style={{color: "blue", fontWeight: "bold"}}> please register</Link></p>
           </Container>
         </Col>
       </Row>

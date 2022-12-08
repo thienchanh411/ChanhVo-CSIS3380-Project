@@ -75,34 +75,8 @@ app.post("/", async (req, res) =>  {
                     })
             })
             .catch((error) => {
-                // return next(error);
+                console.log(error);
             });
-  
-        // console.log("Approproate email")
-        //     const user1 = new User({
-        //         email,
-        //         password,
-        //         firstname ,
-        //         lastname ,
-        //         phone,
-        //         street,
-        //         city,
-        //         province,
-        //         postcode,
-        //         status,
-        //     });
-        //     // await mongoose.connect(urlMongoDB);
-
-        //     user1.save(err=> {
-        //     if(err) {
-        //         console.log("Error when Post request", err);
-        //         res.send("Error when add new user")
-        //     }else {
-        //         console.log("Added new user successfully")
-        //         res.send(user1);
-        //         mongoose.connection.close();
-        //     }
-        // })
 
     }catch (error) {
         console.log("Error when post in api/register ", error)

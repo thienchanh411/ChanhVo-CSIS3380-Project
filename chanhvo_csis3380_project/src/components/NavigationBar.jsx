@@ -32,7 +32,7 @@ const NavigationBar = () => {
       <Router>
           <Navbar bg="light" expand="lg" >
         <Container fluid className='w-70 p-3 col'>
-          <Navbar.Brand href="/">HomePage</Navbar.Brand>
+          {/* <Navbar.Brand href="/"><img src='RehomeLogo.jpg' alt='logo' style={{height: "10vh", width: "10vh"}}/></Navbar.Brand> */}
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse className="row justify-content-end" align = "end">
 
