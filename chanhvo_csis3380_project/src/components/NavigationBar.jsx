@@ -43,7 +43,7 @@ const NavigationBar = () => {
             >
               <Link className="nav-link" to="/">Home</Link>
               {/* <Link className="nav-link" to="admin">Admin</Link> */}
-              
+              <Link className="nav-link" to="learnaboutdog">Learn About Dog</Link>
               <Link className="nav-link" to="rehomepet">Rehome Pet</Link>
               <Link className="nav-link" to="adoptpet">Adopt Pet</Link>
               {isLoggedIn ? "" : <Link className="nav-link" to="login">Login</Link>}
@@ -80,6 +80,7 @@ const NavigationBar = () => {
             <Route exact path='myaccount' element={<MyAccount />} />
             <Route exact path={`profile/:id`} element={<MyProfilePage />} />
             <Route exact path='login' element={<Login/>} />
+            <Route exact path='learnaboutdog' element={<Login/>} />
             <Route exact path='register' element={<Register />} />
             <Route exact path='manageposting' element={<ManagePosting />} />
             <Route exact path='admin' element={<AdminPage />}></Route>

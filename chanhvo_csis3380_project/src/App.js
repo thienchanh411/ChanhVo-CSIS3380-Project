@@ -19,37 +19,6 @@ const App = () => {
   const [roleAdmin, setRoleAdmin] = useState(false)
 
   console.log("Logged in ID on Mainpage Client:", loggedInID);
-  // console.log("Logged in status on Mainpage Client:", isLoggedIn);
-
-  // const getPetListAPI = async ({loggedInID}) => {
-  //   const urlPetAPI = `http://localhost:5000/api/pet/toowner/${loggedInID}`;
-
-  //   await axios.get(urlPetAPI)
-  //     .then((res) => {
-  //       setListPet(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log("User has not logged in");
-  //     })
-  // }
-
-  // const getRequestListAPI = async({loggedInID}) => {
-  //   const urlRequestAPI = `http://localhost:5000/api/request/toowner/${loggedInID}`;
-  //     console.log(urlRequestAPI)
-  //   await axios.get(urlRequestAPI)
-  //     .then((res) => {
-  //       setListRequest(res.data);
-  //     })
-  //     .catch((err) => {
-  //       console.log("User has not logged in");
-  //     })
-  // }
-
-  // if(loggedInID !== ""){
-
-  //   getPetListAPI(loggedInID);
-  //   getRequestListAPI(loggedInID);
-  // }
 
   useEffect(() => {
     const urlAPI = `http://localhost:5000/api/pet/toowner/${loggedInID}`;

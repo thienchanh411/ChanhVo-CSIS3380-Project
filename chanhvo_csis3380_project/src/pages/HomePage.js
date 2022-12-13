@@ -1,9 +1,31 @@
 import React from "react";
 import Developer from "../components/DeveloperInfo"
+// import axios from "axios";
+
 const HomePage = () => {
+   
+  // const makeJoke = async () => {
+  //   const urlJokeAPI = `https://v2.jokeapi.dev/joke/Any`;
+    
+  //   // try {
+  //   await axios.get(urlJokeAPI)
+  //   .then((res) => {
+  //       console.log(res.data)
+  //       let displayImg = document.getElementById("fetchJokeAPI");
+  //        displayImg.innerHTML = (`<p>${res.data.setup}</p>`)
+  //        let displayImg2 = document.getElementById("fetchJoke2API");
+  //        displayImg2.innerHTML = (`<p>${res.data.delivery}</p>`)
+      
+  //   })
+  //   .catch(err => { console.log(err) });
+
+  // }
+  // makeJoke()
+  
+
   return (
     <div>
-
+      
       <div className="d-lg-flex d-none align-items-center justify-content-center "
         style={{
           minHeight: "50vh",
@@ -41,6 +63,18 @@ const HomePage = () => {
         {/* <div className="row-4"></div> */}
       </div>
 
+
+      <div className="container text-center justify-content-center align-items-center"> 
+      {/* <div id="fetchImgAPI" className="container"></div> */}
+        <div className="container text-center pt-5"><h3 style={{fontWeight: "bold"}}>
+          A pet can tell a joke</h3></div>
+        <div className="row"><p className="col fs-4" id="fetchJokeAPI"></p></div>
+        <div className="row"><p className="col fs-4" id="fetchJoke2API"></p></div>
+        
+      </div>
+
+
+
       <div>
         <div className="mt-3">
           <h2 className="fs-1 fw-bold text-center mt-5">How is works</h2>
@@ -49,20 +83,20 @@ const HomePage = () => {
           <table className="m-5 mt-1 col-8">
             <thead className="mx-5">
               <tr>
-                <th className="fs-3" scope="col" style={{minWidth: "10vh"}}></th>
-                <th className="fs-4" scope="col" style={{minWidth: "30vh"}}></th>
+                <th className="fs-3" scope="col" style={{ minWidth: "10vh" }}></th>
+                <th className="fs-4" scope="col" style={{ minWidth: "30vh" }}></th>
               </tr>
-            
+
             </thead>
 
             <tbody className="mx-5 ">
               <tr className="my-3">
-                <td style={{height: "16vh", width: "20vh"}} className="p-2 row justify-content-center">
+                <td style={{ height: "16vh", width: "20vh" }} className="p-2 row justify-content-center">
                   <div className="d-flex justify-content-center align-items-center border 
-                      border-primary  border-5 rounded-circle bg-gradient" 
-                  style={{height: "14vh", width: "14vh", backgroundColor: "#e2e2e2"}}>
-                      <img src="/petProfileIcon.png" alt="step icon" style={{height: "8vh", width: "8vh"}}></img>
-                  </div>            
+                      border-primary  border-5 rounded-circle bg-gradient"
+                    style={{ height: "14vh", width: "14vh", backgroundColor: "#e2e2e2" }}>
+                    <img src="/petProfileIcon.png" alt="step icon" style={{ height: "8vh", width: "8vh" }}></img>
+                  </div>
                 </td>
                 <td className="fs-4 ps-5 ">
                   <h4 className="fw-bold">Create a Pet Profile</h4>
@@ -70,44 +104,44 @@ const HomePage = () => {
                 </td>
               </tr>
               <tr className="my-3">
-                <td style={{height: "16vh", width: "20vh"}} className="p-2 row justify-content-center">
+                <td style={{ height: "16vh", width: "20vh" }} className="p-2 row justify-content-center">
                   <div className="d-flex justify-content-center align-items-center border 
-                      border-primary  border-5 rounded-circle" 
-                  style={{height: "14vh", width: "14vh" , backgroundColor: "#e2e2e2"}}>
-                      <img src="/reviewCandidateIcon.png" alt="step icon" style={{height: "8vh", width: "8vh"}}></img>
-                  </div>            
+                      border-primary  border-5 rounded-circle"
+                    style={{ height: "14vh", width: "14vh", backgroundColor: "#e2e2e2" }}>
+                    <img src="/reviewCandidateIcon.png" alt="step icon" style={{ height: "8vh", width: "8vh" }}></img>
+                  </div>
                 </td>
                 <td className="fs-4 ps-5">
                   <h4 className="fw-bold">Review Applications</h4>
                   <p>The dedicated team at Rehome will give you all the help you need to select the best potential adopters.</p>
-                  
-                  </td>
+
+                </td>
               </tr>
               <tr className="my-3">
-                <td style={{height: "16vh", width: "20vh"}} className="p-2 row justify-content-center">
+                <td style={{ height: "16vh", width: "20vh" }} className="p-2 row justify-content-center">
                   <div className="d-flex justify-content-center align-items-center border 
-                      border-primary  border-5 rounded-circle" 
-                  style={{height: "14vh", width: "14vh" , backgroundColor: "#e2e2e2"}}>
-                      <img src="/meetingIcon.png" alt="step icon" style={{height: "10vh", width: "10vh"}}></img>
-                  </div>            
+                      border-primary  border-5 rounded-circle"
+                    style={{ height: "14vh", width: "14vh", backgroundColor: "#e2e2e2" }}>
+                    <img src="/meetingIcon.png" alt="step icon" style={{ height: "10vh", width: "10vh" }}></img>
+                  </div>
                 </td>
                 <td className="fs-4 ps-5">
                   <h4 className="fw-bold">Meet Adopters</h4>
-                  <p>The Rehome team will guide you through the process of setting safe and pressure-free meetings with applicants.</p>     
-                  </td>
+                  <p>The Rehome team will guide you through the process of setting safe and pressure-free meetings with applicants.</p>
+                </td>
               </tr>
               <tr className="my-3 ">
-                <td style={{height: "16vh", width: "20vh"}} className="p-2 row justify-content-center">
+                <td style={{ height: "16vh", width: "20vh" }} className="p-2 row justify-content-center">
                   <div className="d-flex justify-content-center align-items-center border 
-                      border-primary  border-5 rounded-circle" 
-                  style={{height: "14vh", width: "14vh" , backgroundColor: "#e2e2e2"}}>
-                      <img src="/makeDecisionIcon.png" alt="step icon" style={{height: "10vh", width: "10vh"}}></img>
-                  </div>            
+                      border-primary  border-5 rounded-circle"
+                    style={{ height: "14vh", width: "14vh", backgroundColor: "#e2e2e2" }}>
+                    <img src="/makeDecisionIcon.png" alt="step icon" style={{ height: "10vh", width: "10vh" }}></img>
+                  </div>
                 </td>
                 <td className="fs-4 ps-5">
                   <h4 className="fw-bold">Finalize Adoption</h4>
                   <p>Rehome will provide you with an adoption contract to protect the transfer of your pet ownership.</p>
-                  </td>
+                </td>
               </tr>
             </tbody>
           </table>

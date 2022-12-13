@@ -1,0 +1,533 @@
+[{
+  "_id": {
+    "$oid": "638aef1e2036d0892f147eba"
+  },
+  "ownerId": "638843b5cb0ab432dc54dc06",
+  "petName": "Arie",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "Alaska",
+  "age": "senior",
+  "size": 1,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884cfebdea75aa5294743b"
+  },
+  "ownerId": "63884159cb0ab432dc54dbe8",
+  "petName": "TeddyRenew1",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "shepher",
+  "age": "adult",
+  "size": 4,
+  "isSpayed": false,
+  "color": "black, white, brown",
+  "image": "Golden.jfif",
+  "description": "cute, trainable, enegetic",
+  "diet": "love bones a lot",
+  "rehomeReason": "Pet medical expenses (e.g. vet procedure)",
+  "status": "Adopted",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884d43bdea75aa52947442"
+  },
+  "ownerId": "63884159cb0ab432dc54dbe8",
+  "petName": "Muffy",
+  "petType": "dog",
+  "gender": "male",
+  "breed": "Rottweiler",
+  "age": "young",
+  "size": 4,
+  "isSpayed": true,
+  "color": "Back, yellow",
+  "image": "Rottweiler.jfif",
+  "description": "cute, trainable, energetic",
+  "diet": "hate cucumber",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Adopted",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884db6bdea75aa52947447"
+  },
+  "ownerId": "63884159cb0ab432dc54dbe8",
+  "petName": "Goffy",
+  "petType": "cat",
+  "gender": "male",
+  "breed": "Golden Retrieve",
+  "age": "puppy",
+  "size": 2,
+  "isSpayed": false,
+  "color": "yellow",
+  "image": "DogSession-Homepage-3.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Landlord permission issues",
+  "status": "InActive",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884ee54f3b7d9a97d2e79e"
+  },
+  "ownerId": "638841eecb0ab432dc54dbf1",
+  "petName": "Abbie",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "Labrader Retrieve",
+  "age": "adult",
+  "size": 3,
+  "isSpayed": false,
+  "color": "white",
+  "image": "DogSession-Homepage-3.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884f594f3b7d9a97d2e7a4"
+  },
+  "ownerId": "638841eecb0ab432dc54dbf1",
+  "petName": "Areo",
+  "petType": "cat",
+  "gender": "male",
+  "breed": "Egyptian cat",
+  "age": "puppy",
+  "size": 1,
+  "isSpayed": true,
+  "color": "black, white",
+  "image": "CatImg3.jfif",
+  "description": "cute, trainable",
+  "diet": "love fish",
+  "rehomeReason": "Pet medical expenses (e.g. vet procedure)",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884f744f3b7d9a97d2e7a7"
+  },
+  "ownerId": "638842d5cb0ab432dc54dbfa",
+  "petName": "Areo",
+  "petType": "dog",
+  "gender": "male",
+  "breed": "Husky",
+  "age": "baby",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884f8f4f3b7d9a97d2e7aa"
+  },
+  "ownerId": "638842d5cb0ab432dc54dbfa",
+  "petName": "Arie",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "Alaska",
+  "age": "senior",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884f944f3b7d9a97d2e7ad"
+  },
+  "ownerId": "638842d5cb0ab432dc54dbfa",
+  "petName": "Arie",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "Alaska",
+  "age": "senior",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884f954f3b7d9a97d2e7b0"
+  },
+  "ownerId": "638842d5cb0ab432dc54dbfa",
+  "petName": "Arie",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "Alaska",
+  "age": "senior",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884f964f3b7d9a97d2e7b3"
+  },
+  "ownerId": "638842d5cb0ab432dc54dbfa",
+  "petName": "Arie",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "Alaska",
+  "age": "senior",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884fa64f3b7d9a97d2e7b6"
+  },
+  "ownerId": "638843b5cb0ab432dc54dc06",
+  "petName": "Arie",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "Alaska",
+  "age": "senior",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884fa64f3b7d9a97d2e7b9"
+  },
+  "ownerId": "638843b5cb0ab432dc54dc06",
+  "petName": "Arie",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "Alaska",
+  "age": "senior",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884fa74f3b7d9a97d2e7bc"
+  },
+  "ownerId": "638843b5cb0ab432dc54dc06",
+  "petName": "Arie",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "Alaska",
+  "age": "senior",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884fc54f3b7d9a97d2e7bf"
+  },
+  "ownerId": "638843b5cb0ab432dc54dc06",
+  "petName": "Alice",
+  "petType": "cat",
+  "gender": "female",
+  "breed": "england cat",
+  "age": "adult",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884fc54f3b7d9a97d2e7c2"
+  },
+  "ownerId": "638843b5cb0ab432dc54dc06",
+  "petName": "Alice",
+  "petType": "cat",
+  "gender": "female",
+  "breed": "england cat",
+  "age": "adult",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884fc64f3b7d9a97d2e7c5"
+  },
+  "ownerId": "638843b5cb0ab432dc54dc06",
+  "petName": "Alice",
+  "petType": "cat",
+  "gender": "female",
+  "breed": "england cat",
+  "age": "adult",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638850294f3b7d9a97d2e7c8"
+  },
+  "ownerId": "6388445ccb0ab432dc54dc11",
+  "petName": "Allien",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "fox shox",
+  "age": "adult",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638850314f3b7d9a97d2e7cb"
+  },
+  "ownerId": "6388445ccb0ab432dc54dc11",
+  "petName": "Allien",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "fox shox",
+  "age": "adult",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background2.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638850514f3b7d9a97d2e7ce"
+  },
+  "ownerId": "6388453ecb0ab432dc54dc1d",
+  "petName": "Charlie",
+  "petType": "cat",
+  "gender": "female",
+  "breed": "egypt cat",
+  "age": "adult",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black, white",
+  "image": "background2.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638850594f3b7d9a97d2e7d1"
+  },
+  "ownerId": "6388453ecb0ab432dc54dc1d",
+  "petName": "Charlie",
+  "petType": "cat",
+  "gender": "female",
+  "breed": "egypt cat",
+  "age": "adult",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black",
+  "image": "background2.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638850984f3b7d9a97d2e7d7"
+  },
+  "ownerId": "638845b7cb0ab432dc54dc29",
+  "petName": "Jame",
+  "petType": "cat",
+  "gender": "male",
+  "breed": "persia cat",
+  "age": "senior",
+  "size": 2,
+  "isSpayed": false,
+  "color": "black",
+  "image": "CatSession-Homepage-2.jpg",
+  "description": "cute, trainable",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638851144f3b7d9a97d2e7dd"
+  },
+  "ownerId": "638845ebcb0ab432dc54dc2c",
+  "petName": "Teddy",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "shepher",
+  "age": "adult",
+  "size": 5,
+  "isSpayed": true,
+  "color": "black, white, brown",
+  "image": "DogSession-Homepage.jpg",
+  "description": "cute, trainable, enegetic",
+  "diet": "love bones",
+  "rehomeReason": "Infant, young children or pregnancy",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638e528c66b9ac22e4fa636c"
+  },
+  "ownerId": "63884159cb0ab432dc54dbe8",
+  "petName": "lalanew",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "Beagle",
+  "age": "puppy",
+  "size": 5,
+  "isSpayed": false,
+  "color": "black",
+  "image": "Beagle.jfif",
+  "description": "cute, trainable, enegetic",
+  "diet": "love bones",
+  "rehomeReason": "Does not get along with other pet",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638fb384181b0be3e8b12eb6"
+  },
+  "ownerId": "638d4353de5700378b0763d6",
+  "petName": "Luna",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "shepherd",
+  "age": "puppy",
+  "size": 1,
+  "isSpayed": true,
+  "color": "Black yellow",
+  "image": "AustraliaShephered.jpg",
+  "description": "",
+  "diet": "",
+  "rehomeReason": "Behavioral issues",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638fb9883e4bf6993fc05275"
+  },
+  "ownerId": "638841c2cb0ab432dc54dbee",
+  "petName": "Luna",
+  "petType": "cat",
+  "gender": "male",
+  "breed": "persian cat",
+  "age": "puppy",
+  "size": 1,
+  "isSpayed": false,
+  "color": "gray",
+  "image": "PersianCat.jfif",
+  "description": "Cute, trainable",
+  "diet": "love fish",
+  "rehomeReason": "Ongoing costs (e.g. lost job)",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638fbafc3e4bf6993fc0527d"
+  },
+  "ownerId": "638841c2cb0ab432dc54dbee",
+  "petName": "Sofie",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "Mountain Bernese",
+  "age": "young",
+  "size": 3,
+  "isSpayed": true,
+  "color": "Black yellow",
+  "image": "MountainBernese.jfif",
+  "description": "Love walking, swimming, energetic",
+  "diet": "love beef",
+  "rehomeReason": "Busy schedule",
+  "status": "Active",
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63912d841eef23c40f151985"
+  },
+  "ownerId": "63912d3a1eef23c40f15197f",
+  "petName": "Testpet2",
+  "petType": "dog",
+  "gender": "female",
+  "breed": "Bernese",
+  "age": "young",
+  "size": 3,
+  "isSpayed": true,
+  "color": "Black yellow",
+  "image": "Husky.jfif",
+  "description": "energetic",
+  "diet": "love cheese",
+  "rehomeReason": "Ongoing costs (e.g. lost job)",
+  "status": "InActive",
+  "__v": 0
+}]

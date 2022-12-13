@@ -1,0 +1,421 @@
+[{
+  "_id": {
+    "$oid": "63884159cb0ab432dc54dbe8"
+  },
+  "email": "mary@somewhere.com",
+  "password": "$2b$12$s2sy1KSjd7xihoQ3mraoBOeWqOAkeVMCf/4NobyrxZumkFHeXjnLm",
+  "firstname": "Green2",
+  "lastname": "Mary",
+  "phone": "555-556-5566",
+  "street": "123 Queensway",
+  "city": "Burnaby",
+  "province": "BC",
+  "postcode": "B2c",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6388418dcb0ab432dc54dbeb"
+  },
+  "email": "peter@somewhere.com",
+  "password": "$2b$12$I7aVLmSvSYJNEnRQ1MAh6.D5EyxVO1PMypNf4AVwsKJYN/BQlxXLy",
+  "firstname": "Peter",
+  "lastname": "Pan",
+  "phone": "555-666-7777",
+  "street": "123 Kings way",
+  "city": "Burnaby",
+  "province": "BC",
+  "postcode": "V2V",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638841c2cb0ab432dc54dbee"
+  },
+  "email": "jack@somewhere.com",
+  "password": "$2b$12$xuJQs6VLjxb.lHIUDXBwL.crPs7AJlxcw4vEZtzX7zQDBCxJ/VAdO",
+  "firstname": "Jack",
+  "lastname": "Whisher",
+  "phone": "111-222-1122",
+  "street": "123 Hasting Street",
+  "city": "Vancouver",
+  "province": "BC",
+  "postcode": "V6E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638841eecb0ab432dc54dbf1"
+  },
+  "email": "jackie@somewhere.com",
+  "password": "$2b$12$0pVzD23Ld6LMYztkHkXkTuYTZjczs2j1//IdwntqD3a6iUP92d1WO",
+  "firstname": "Jackie",
+  "lastname": "Chan",
+  "phone": "111-000-0011",
+  "street": "123 Marrine way",
+  "city": "Vancouver",
+  "province": "BC",
+  "postcode": "V9E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6388422bcb0ab432dc54dbf4"
+  },
+  "email": "nicky@somewhere.com",
+  "password": "$2b$12$cyW7DIFHmfRd7SNPegA3f.WPXnpGVO49EJl4tF.mUwboAeyt4pmle",
+  "firstname": "Nicky",
+  "lastname": "Butt",
+  "phone": "778-877-7788",
+  "street": "23 Royal Avenue",
+  "city": "New Wesminster",
+  "province": "BC",
+  "postcode": "N2E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638842b2cb0ab432dc54dbf7"
+  },
+  "email": "daisy@somewhere.com",
+  "password": "$2b$12$gpyziEUhbYMJbZUNMAMy5eq1LMOv7092InF4yT0kkyja4p9sSUx9C",
+  "firstname": "Daisy",
+  "lastname": "Smith",
+  "phone": "778-877-7788",
+  "street": "123 Scoth Road",
+  "city": "Surret",
+  "province": "BC",
+  "postcode": "S2E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638842d5cb0ab432dc54dbfa"
+  },
+  "email": "terry@somewhere.com",
+  "password": "$2b$12$sSdb3WhQvLcrNgQOyS6Gte.iO4nE0OW.f/iGEM4s3yM7.mmQFHJ76",
+  "firstname": "Terry",
+  "lastname": "John",
+  "phone": "778-877-7788",
+  "street": "123 King Gorge",
+  "city": "Surrey",
+  "province": "BC",
+  "postcode": "S3E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884320cb0ab432dc54dbfd"
+  },
+  "email": "william@somewhere.com",
+  "password": "$2b$12$ROaUmC7lW04kWt7fvZ36qOVcfbbUKd2XKWnm.OrVjUA9dX40wmwpu",
+  "firstname": "William",
+  "lastname": "Smith",
+  "phone": "778-877-7788",
+  "street": "123 6th Street",
+  "city": "New Westminster",
+  "province": "BC",
+  "postcode": "S5E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884373cb0ab432dc54dc03"
+  },
+  "email": "calvaho@somewhere.com",
+  "password": "$2b$12$yh4KPs84DlV22AtlEWIUt.KMhOCuNvlwOVbJM7nscpNk9U0EQ3ZGi",
+  "firstname": "Calvaho",
+  "lastname": "Torres",
+  "phone": "778-877-7788",
+  "street": "123 6th Street",
+  "city": "New Westminster",
+  "province": "BC",
+  "postcode": "S5E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638843b5cb0ab432dc54dc06"
+  },
+  "email": "joshua@somewhere.com",
+  "password": "$2b$12$BP6J/mRYhegymBz4Fuzt4u6eVQ5U1i3ed/vOEZPmp4XwWKA2Ww556",
+  "firstname": "Joshua",
+  "lastname": "Moore",
+  "phone": "555-877-5555",
+  "street": "123 16th Street",
+  "city": "New Westminster",
+  "province": "BC",
+  "postcode": "S5E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884402cb0ab432dc54dc0c"
+  },
+  "email": "joshua.m@somewhere.com",
+  "password": "$2b$12$dorSGZNmXuxF5dCiq9z8Wu9m8nBS6cMiruR.dIk5xQPN8O861GCDG",
+  "firstname": "Joshua",
+  "lastname": "Martin",
+  "phone": "555-667-5521",
+  "street": "897 6th Street",
+  "city": "New Westminster",
+  "province": "BC",
+  "postcode": "S5E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884425cb0ab432dc54dc0e"
+  },
+  "email": "teddy@somewhere.com",
+  "password": "$2b$12$BbRWuTborqGyQffkJNJOBujKSg9JCdW65gX4RQN5vBAOkh9qWKn5K",
+  "firstname": "Teddy",
+  "lastname": "Clark",
+  "phone": "555-667-5521",
+  "street": "87 26th Street",
+  "city": "New Westminster",
+  "province": "BC",
+  "postcode": "S5E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6388445ccb0ab432dc54dc11"
+  },
+  "email": "may@somewhere.com",
+  "password": "$2b$12$EmMoxop3Mra8Hs0BJCFvYOgO8DsUJaMZGKupnupMomhkNfFLJj9hW",
+  "firstname": "May",
+  "lastname": "Smith",
+  "phone": "111-627-2521",
+  "street": "87 26th Street",
+  "city": "New Westminster",
+  "province": "BC",
+  "postcode": "N5E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884482cb0ab432dc54dc14"
+  },
+  "email": "thomas@somewhere.com",
+  "password": "$2b$12$cu3g2iidSz18f4adV2wl2O6oMCsYzxUlGEOYQAHA5r49YqAGL18S6",
+  "firstname": "Thomas",
+  "lastname": "Smith",
+  "phone": "111-627-2521",
+  "street": "72 21th Street",
+  "city": "New Westminster",
+  "province": "BC",
+  "postcode": "N1E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638844a5cb0ab432dc54dc17"
+  },
+  "email": "thomas.m@somewhere.com",
+  "password": "$2b$12$JbhHriIhK4Jdk0zz1pn0n.6X4ICSsmdtpk41Y5MrjD7O20/wmxzf6",
+  "firstname": "Thomas",
+  "lastname": "more",
+  "phone": "111-222-2521",
+  "street": "72 21th Street",
+  "city": "Coquitlam",
+  "province": "BC",
+  "postcode": "C1E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638844c6cb0ab432dc54dc1a"
+  },
+  "email": "chanh@somewhere.com",
+  "password": "$2b$12$LAkl5k0S5Z3aBReRTWEI1eUIu35ohYABNSKQdALry577Lqo4Zfqvq",
+  "firstname": "Chanh",
+  "lastname": "Vo",
+  "phone": "111-222-2521",
+  "street": "72 18th Street",
+  "city": "Burnaby",
+  "province": "BC",
+  "postcode": "B1E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6388453ecb0ab432dc54dc1d"
+  },
+  "email": "lili@somewhere.com",
+  "password": "$2b$12$1bXm951gChuAwpN5qqdbTehRl8eeafZ/zbc/fgBeiGsfexrs7kpvu",
+  "firstname": "Lilt",
+  "lastname": "Lee",
+  "phone": "111-222-2521",
+  "street": "72 13th Street",
+  "city": "Burnaby",
+  "province": "BC",
+  "postcode": "B8E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6388456dcb0ab432dc54dc23"
+  },
+  "email": "micheal@somewhere.com",
+  "password": "$2b$12$.ZVwsWRyS1/LVURBuGvD1uXZDLkWzPw74.Cnpd0foRisb0WzXKm6i",
+  "firstname": "Micheal",
+  "lastname": "Martin",
+  "phone": "111-222-2521",
+  "street": "72 15th Street",
+  "city": "Burnaby",
+  "province": "BC",
+  "postcode": "B8E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6388457fcb0ab432dc54dc26"
+  },
+  "email": "martin@somewhere.com",
+  "password": "$2b$12$.xJQEYOuxNbAgFitTVYhOupPtwdAM6Awg5cr.f8bKFjiBPulCAv4u",
+  "firstname": "Martin",
+  "lastname": "Chan",
+  "phone": "111-333-2521",
+  "street": "72 15th Street",
+  "city": "Burnaby",
+  "province": "BC",
+  "postcode": "B8E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638845b7cb0ab432dc54dc29"
+  },
+  "email": "jame@somewhere.com",
+  "password": "$2b$12$rtexgm/o1khwO9TtMHwOPe8O80X/pY20Emp4995klxcEGIsAHQz8y",
+  "firstname": "Jame",
+  "lastname": "Carter",
+  "phone": "111-333-2521",
+  "street": "72 15th Street",
+  "city": "Burnaby",
+  "province": "BC",
+  "postcode": "B8E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638845ebcb0ab432dc54dc2c"
+  },
+  "email": "parker@somewhere.com",
+  "password": "$2b$12$M1ZmCGEBpCmLg3847sWkw.8vTET8RZ/8oRCCYkUM1mhtrVmR8zwe6",
+  "firstname": "Jame",
+  "lastname": "Parker",
+  "phone": "111-333-2521",
+  "street": "72 Granvile Street",
+  "city": "Vancouver",
+  "province": "BC",
+  "postcode": "V8E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63884610cb0ab432dc54dc2f"
+  },
+  "email": "robert@somewhere.com",
+  "password": "$2b$12$zarhlUULK8Kuvk3ZXOY6...Ig97FZW6TwOI5618NNMhwyYxpzN9jW",
+  "firstname": "Steve",
+  "lastname": "Robert",
+  "phone": "111-333-2521",
+  "street": "722 Granvile Street",
+  "city": "Vancouver",
+  "province": "BC",
+  "postcode": "V8E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6388461ccb0ab432dc54dc32"
+  },
+  "email": "steven@somewhere.com",
+  "password": "$2b$12$tfkLvD4Ib9RLZtWR77ERbOHV5OIt8u2B0dvjRs2edNN2OdMiSuRgC",
+  "firstname": "Steve",
+  "lastname": "Robert",
+  "phone": "111-333-2521",
+  "street": "722 Granvile Street",
+  "city": "Vancouver",
+  "province": "BC",
+  "postcode": "V8E",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638d4353de5700378b0763d6"
+  },
+  "email": "fernaldo@somewhere.com",
+  "password": "$2b$12$RDrQ3zt/z7E1WQGkQeFAGeOv7ewxwgd088NAxKLn5gdpb/IqWDMuK",
+  "firstname": "Fernaldo",
+  "lastname": "Torrest",
+  "phone": "555-555-5555",
+  "street": "123 Royal avenue",
+  "city": "New Wesminster",
+  "province": "BC",
+  "postcode": "N2N",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "638f079f019c8260a1dbe20f"
+  },
+  "email": "fernaldo123@somewhere.com",
+  "password": "$2b$12$3bZR5wDclrUzZ/cSZnTKBO8plv/UwLEC3/ydDbEeDVrJh.MsD3AJS",
+  "firstname": "Torrest13",
+  "lastname": "Fernaldo13",
+  "phone": "444-888-9900",
+  "street": "123 linden AVENUE",
+  "city": "Burnaby",
+  "province": "BC",
+  "postcode": "B4B",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "639048f0458394ff40bfb479"
+  },
+  "email": "bruno@somewhere.com",
+  "password": "$2b$12$IqACU0nrO.vTjJypQEwhB.2JtqQde2G6KqkQOTCPlommgPeC2gz1m",
+  "firstname": "Bruno",
+  "lastname": "Fernaldo",
+  "phone": "123-321-1123",
+  "street": "32 Hasting Street",
+  "city": "Vancouver",
+  "province": "BC",
+  "postcode": "V9C",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "6390fbd72f2d1cc3923e8eb9"
+  },
+  "email": "ricardo@somewhere.com",
+  "password": "$2b$12$ZlbFwVNfsTlCySmD1FyLy.Nlz6VnN86dCHeoCPl8rQLynIZsJdCju",
+  "firstname": "Ricardo",
+  "lastname": "Fernaldo",
+  "phone": "555-555-5555",
+  "street": "21 London Street",
+  "city": "Coquitlam",
+  "province": "BC",
+  "postcode": "C2D",
+  "status": true,
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "63912d3a1eef23c40f15197f"
+  },
+  "email": "vochanh@somewhere.com",
+  "password": "$2b$12$x2/EkqzGJi54fVNkJtJTjOC/0eW6oG3PJVw6qhfvDqYNStH9jDeo.",
+  "firstname": "Fernaldo",
+  "lastname": "Bruno",
+  "phone": "555-555-5555",
+  "street": "123 Canada way",
+  "city": "Burnaby",
+  "province": "BC",
+  "postcode": "B2C",
+  "status": true,
+  "__v": 0
+}]
