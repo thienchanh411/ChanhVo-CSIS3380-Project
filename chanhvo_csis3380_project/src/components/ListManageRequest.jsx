@@ -1,4 +1,4 @@
-// import axios from "axios";
+
 const ListManageRequest = ({senderId, petId, _id, requestTime, status, responseTime,
     handleAcceptRequest , handleRejectRequest}) => {
     
@@ -31,7 +31,6 @@ const ListManageRequest = ({senderId, petId, _id, requestTime, status, responseT
     return (
         <li className="list-group-item ml-4 fs-5" >
             <div className='row justify-content-left ' >
-                {/* <p className='col-6 ' >Request from {request.senderID} at {request.requestTime}</p> */}
                 <div className='col-5 ' >
                     <p >Request from {senderId} </p>
                     <p>at {requestTime}</p>
@@ -46,7 +45,6 @@ const ListManageRequest = ({senderId, petId, _id, requestTime, status, responseT
                     <div >
 
                         {/* Check if status rejected or accepted then hide the response btn */}
-                        {/* <div className={showButton} id={`groupResponseBtn${request.requestId}`}> */}
                         <div className={showButton} id={`groupResponseBtn${_id}`}>
                             <div className='col-6'>
                                 <button type="button" className=' btn btn-primary'

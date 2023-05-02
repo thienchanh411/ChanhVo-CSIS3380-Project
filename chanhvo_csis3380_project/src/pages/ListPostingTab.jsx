@@ -1,13 +1,5 @@
-// import React, { useState } from "react";
-// import { petInfo } from "../data/petInfo";
+
 const ListPostingTab = ({listPet =[], adminDeletePost}) => {
-
-    // const [postList, setPostList] = useState(petInfo);
-
-    // const adminDeletePost = (id) => {
-    //     const newListPost = postList.filter((postElem) => id !== postElem.id);
-    //     setPostList(newListPost);
-    // }
 
     return ( 
         <>

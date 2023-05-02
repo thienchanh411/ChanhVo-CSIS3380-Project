@@ -33,7 +33,6 @@ const ManagePosting = () => {
     
   }, [loggedInID, setListRequest])
   
-
   // FUNCTION HANDLE DELETE POSTING
   const handleDeletePosting = async (pet) => {
 
@@ -45,14 +44,11 @@ const ManagePosting = () => {
       const newListPet = listPet.filter((petElem) => petElem._id !== pet._id)
       setListPet(newListPet);
     }
-
-
   }
 
   // Function handle Edit Posting
   const handleEditPosting = async (pet) => {
     
-    // const urlAPI = `http://localhost:5000/api/pet/update/${pet._id}`;
     setShowEditForm(true);
     setPetInfoModal(pet);
   }
@@ -93,9 +89,6 @@ const ManagePosting = () => {
 
     const status = "Active";
 
-    // image === "" ? (image = pet.image) : image = document.getElementById("uploadPicture").value
-    // event.preventDefault();
-
     let image = "";
     const setImage = () => {
       if (imageUpload.files.length===0){
@@ -128,7 +121,6 @@ const ManagePosting = () => {
 
     const newListPet = listPet.map(petElem => 
       petElem._id === pet._id ? {
-        // _id: pet._id,ownerId : loggedInID, 
         ...petElem,
         petName, petType, gender, breed, age, size, isSpayed, color, image, description, 
         diet,rehomeReason, status, 
@@ -136,7 +128,7 @@ const ManagePosting = () => {
 
     console.log("list pet after update",newListPet)
     setListPet(newListPet)
-    // setShowEditForm(false)
+
   }
   // METHOD SHOW POPUP EDIT FORM
   const displayEditForm = (pet) => {
@@ -155,9 +147,7 @@ const ManagePosting = () => {
 
             </div>
             <div className="modal-body">
-              <form data-multi-step className="multi-step-form m-1 p-2 "
-                // onSubmit={editPetInformation(pet)}
-                >
+              <form data-multi-step className="multi-step-form m-1 p-2 ">
                 {/* <div className="card" data-step> */}
                 <div className="">
                   <h3 className="text-center font-weight-bolder border-bottom border-success mt-5"
@@ -168,9 +158,7 @@ const ManagePosting = () => {
                   <label htmlFor="pet_type" className="col-lg-4 col-form-label" style={{ fontWeight: "bold" }}>Are you rehoming a dog, cat or other pet?</label>
 
                   <select className=" col-lg-8 border-dark" name="pet_type" id='petType'
-                    defaultValue={pet.petType}
-                  // onChange={(event)=>setPetType(event.target.value)}
-                  >
+                    defaultValue={pet.petType}>
                     <option value=""  >Select One</option>
                     <option value="dog">Dog</option>
                     <option value="cat">Cat</option>
@@ -178,15 +166,11 @@ const ManagePosting = () => {
 
                 </div>
 
-                {/* </div> */}
-
                 <div className="form-group row m-4 p-2">
                   <label htmlFor="spayed_neutered" className="col-lg-4 col-form-label" style={{ fontWeight: "bold" }}>Is your pet spayed or neutered?</label>
                   {/* <div className=" col"> */}
                   <select className="col-lg-8 border-dark" name="spayed_neutered"
-                    id="spayed_neutered" defaultValue={pet.isSpayed}
-                  // onChange={(event)=>setIsSpayed(event.target.value)}
-                  >
+                    id="spayed_neutered" defaultValue={pet.isSpayed}>
                     <option data-eventlabel="unset">Select One</option>
                     <option data-eventlabel="spayed/neutered" value="true">Yes</option>
                     <option data-eventlabel="not spayed/neutered" value="false">No</option>
@@ -413,15 +397,6 @@ const ManagePosting = () => {
       : {...requestElem}
     )
     setListRequest(newRequestList);
-
-    // const indexRequest = listRequest.findIndex((reqElem) => reqElem.requestId === request.requestId);
-
-    // const remainRequest = listRequest.filter((reqElem) =>
-    // (reqElem.requestId !== request.requestId))
-
-    // remainRequest.splice(indexRequest, 0, request);
-    // console.log(remainRequest)
-    // setListRequest(remainRequest);
   }
 
   // CHECK IF USER LOGGED IN, SHOW ALL CONTENT, ELSE, SHOW REQUIRE LOGIN
@@ -493,15 +468,14 @@ const ManagePosting = () => {
 
                 </div>
               </div>
-              {/* Collapse managing board */}
-              {/* <div className="collapse row-lg-8 mx-5" id={`collapse${pet.id}`}> */}
+
               <div className=" row-lg-8 mx-5" 
-              // style={{ display: styleManageForm }} 
+
               id={`collapse${pet._id}`}>
                 <div className="">
                   <ul className="list-group">
 
-                    {listRequest === null ? <p>There is no request</p>
+                    {listRequest.length === 0 ? <p>There is no request</p>
                     : listRequest.filter((request) => request.petId === pet._id)
                       .filter((request) => request.ownerId === loggedInID)
                       .map((request, index) => {

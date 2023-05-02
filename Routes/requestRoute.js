@@ -29,10 +29,12 @@ app.get("/", async (req, res) => {
 // OWNER CHECK REQUESTS TO THEIR PETS
 
 app.get("/toowner/:userId", async (req, res) => {
-    const ownerId = req.params.userId;
+    let ownerId = req.params.userId;
     try{
         await mongoose.connect(urlMongoDB);
         console.log("Connnected to DB from get All Requests for Owner");
+        // ownerId = new mongoose.Types.ObjectId(ownerId);
+        console.log(ownerId);
 
         // IF WE SEND RESPONSE IN HERE WE WILL GOT THE ERROR WHEN WE SEND THE RESULT IN BELOW
         // res.send("Connected to DB")
@@ -47,6 +49,33 @@ app.get("/toowner/:userId", async (req, res) => {
             }
             
         })
+        // Request.aggregate([
+        //     {
+        //         $lookup: {
+        //             from: "users",
+        //             localField: "senderId",
+        //             foreignField: "_id",
+        //             as: "sender"
+        //         }
+
+        //     }, 
+        //     {$unwind: "$sender"},
+        //      {$match : {"ownerId" : ownerId}},
+        //     {$project: {
+        //         "sender._id": 0,
+        //         "sender.password" : 0,
+
+        //     }}
+           
+        // ], (err, result) => {
+        //     if(err){
+        //         console.log("Error when get request to the pet of the owner", err);
+        //         res.status(401).json("Something went wrong when get request for those pet")
+        //     }else{
+        //         console.log("List requests",result);
+        //         res.status(200).json(result)
+        //     }
+        // })
     }catch(err){
         console.log("Errer form get all request API", err)
     }
@@ -68,6 +97,17 @@ app.get("/touser/:userId", async (req, res) => {
                 mongoose.connection.close();
             }
         })
+
+        // Request.aggregate([
+        //     {
+        //         $lookup: {
+        //             from: "users",
+        //             localField: "senderId",
+        //             foreignField: "_id",
+        //             as: "sender"
+        //         }
+        //     }
+        // ])
     }catch(err){
         console.log("Errer form get all request API", err)
     }
@@ -78,9 +118,11 @@ app.post("/:userID", async (req, res) => {
     const userID = req.params.userID;
     const status = "Pending";
 
-    const { petId, ownerId, requestTime} = req.body;
+    let { petId, ownerId, requestTime} = req.body;
 
     try{
+        ownerId = new mongoose.Types.ObjectId(ownerId);
+
         const newRequest = new Request({
             senderId: userID,
             ownerId : ownerId, 

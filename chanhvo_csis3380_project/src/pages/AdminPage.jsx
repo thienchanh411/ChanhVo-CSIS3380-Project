@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
 import ListPostingTab from "./ListPostingTab";
 import ListUserTab from "./ListUserTab";
-// import { userInfo } from "../data/userInfo";
-// import { petInfo } from "../data/petInfo";
 import { AppContext } from "../components/AppContext";
+
 const AdminPage = () => {
   const {listUser, setListUser} = useContext(AppContext);
   const {listPet, setListPet} = useContext(AppContext);

@@ -1,13 +1,6 @@
-// import React, { useState } from "react";
-// import { userInfo } from "../data/userInfo";
 
 const ListUserTab = ({listUser = [], adminDeleteUser}) => {
-    // const [userList, setUserList] = useState(userInfo);
 
-    // const adminDeleteUser = (id) => {
-    //     const newListUser = userList.filter((userElem) => id !== userElem.id);
-    //     setUserList(newListUser);
-    // }
     console.log(listUser);
     return (
         <>

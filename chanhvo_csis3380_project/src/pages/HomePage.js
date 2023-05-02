@@ -1,27 +1,7 @@
 import React from "react";
 import Developer from "../components/DeveloperInfo"
-// import axios from "axios";
 
 const HomePage = () => {
-   
-  // const makeJoke = async () => {
-  //   const urlJokeAPI = `https://v2.jokeapi.dev/joke/Any`;
-    
-  //   // try {
-  //   await axios.get(urlJokeAPI)
-  //   .then((res) => {
-  //       console.log(res.data)
-  //       let displayImg = document.getElementById("fetchJokeAPI");
-  //        displayImg.innerHTML = (`<p>${res.data.setup}</p>`)
-  //        let displayImg2 = document.getElementById("fetchJoke2API");
-  //        displayImg2.innerHTML = (`<p>${res.data.delivery}</p>`)
-      
-  //   })
-  //   .catch(err => { console.log(err) });
-
-  // }
-  // makeJoke()
-  
 
   return (
     <div>
@@ -35,7 +15,7 @@ const HomePage = () => {
           backgroundRepeat: 'no-repeat',
           opacity: 0.7
         }}>
-        {/* <div className="row-4"></div> */}
+      
         <div className="row-4 text-center" >
           <h2 className="fs-2">Where Happily Ever After Begins. Again. </h2>
           <h4 className="mb-5">We are here to help you find <br /> a new loving family for your beloved pet</h4>
@@ -43,7 +23,7 @@ const HomePage = () => {
             <button className="btn btn-primary">Get started</button>
           </div>
         </div>
-        {/* <div className="row-4"></div> */}
+        
       </div>
 
       <div className="d-lg-none d-flex align-items-center justify-content-center border-bottom border-3"
@@ -52,7 +32,7 @@ const HomePage = () => {
           backgroundBlendMode: "overlay",
           backgroundSize: '100% 100%',
         }}>
-        {/* <div className="row-4"></div> */}
+
         <div className="row-4 text-center " style={{ color: "#134f5c" }}>
           <h2>Where Happily Ever After Begins. Again. </h2>
           <h4 className="mb-5">We are here to help you find <br /> a new loving family for your beloved pet</h4>
@@ -60,20 +40,14 @@ const HomePage = () => {
             <button className="btn btn-primary">Get started</button>
           </div>
         </div>
-        {/* <div className="row-4"></div> */}
+
       </div>
 
 
       <div className="container text-center justify-content-center align-items-center"> 
-      {/* <div id="fetchImgAPI" className="container"></div> */}
-        <div className="container text-center pt-5"><h3 style={{fontWeight: "bold"}}>
-          A pet can tell a joke</h3></div>
         <div className="row"><p className="col fs-4" id="fetchJokeAPI"></p></div>
         <div className="row"><p className="col fs-4" id="fetchJoke2API"></p></div>
-        
       </div>
-
-
 
       <div>
         <div className="mt-3">

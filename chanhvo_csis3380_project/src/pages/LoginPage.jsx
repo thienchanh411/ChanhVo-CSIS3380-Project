@@ -70,9 +70,7 @@ const Login = () => {
                   value={password}
                   onChange={(event) => setPassword(event.target.value)} />
               </Form.Group>
-              {/* <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-              </Form.Group> */}
+
               <div className="mb-3 row justify-content-center">
                 <Button className="col-sm-5 fs-5" variant="primary" type="submit">
                   Submit

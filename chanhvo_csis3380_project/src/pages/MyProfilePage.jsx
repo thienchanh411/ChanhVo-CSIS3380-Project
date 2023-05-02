@@ -7,9 +7,6 @@ import axios from "axios";
 
 function MyProfilePage() {
     const {loggedInID, isLoggedIn} = useContext(AppContext)
-    
-    // const { loggedInID,isLoggedIn, setIsLoggedIn } = useContext(AppContext);
-    //const {firstname, lastname,email, phone, street, city, provice, postcode, password}
 
     const [firstname, setFirstname] = useState("")
     const [lastname, setLastname] = useState("")

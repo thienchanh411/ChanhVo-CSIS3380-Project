@@ -36,12 +36,8 @@ const AdoptPet = () => {
 
   // Click button Detail to show more information
   const showDetail = (pet) => {
-    // console.log(pet);
     setShowModal(true);
-    // Object.assign(pet, ...modalInfo)
     setModalInfo(pet);
-    // console.log(modalInfo)
-    // showModal===true ? displayModal(pet): (<p></p>);
 
   }
 
@@ -225,8 +221,6 @@ const AdoptPet = () => {
                   </div>
                 </div>
               </div>
-              // </>
-
             )
           })}
         </div>

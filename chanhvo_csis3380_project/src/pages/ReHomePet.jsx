@@ -70,10 +70,6 @@ const RehomePet = () => {
         setDescription("");
         setDiet("");
     }
-
-    
-
-
   }
 
      //* MODAL SHOW SUCCESSFUL REGISTRATION */
@@ -165,21 +161,6 @@ if(isLoggedIn === false){
                 <option data-eventlabel="not spayed/neutered" value="false">No</option>
               </select>
               <span className="error-message fix-margin-1"></span>
-
-              {/* <div className="more-message closed">
-                <p id="easy_not_spayed" style={{ display: "none" }}
-                  // spayed={({ spayedStatus }) => {
-                  //   console.log(spayedStatus)
-                  // }}
-                  // showSpayInfor={(spayedStatus) => {
-                  //   console.log(spayedStatus);
-                  // }}
-                >At this time we are unable to rehome pets that are not spayed or neutered. To locate low cost spay/neuter providers in your area, use 
-                <a data-track="{&quot;eventCat&quot;: &quot;Onboarding&quot;, &quot;eventAct&quot;: &quot;Clicked ASPCA low cost spay neuter programs link&quot;, &quot;eventLbl&quot;: &quot;List-A-Pet v1 Step 1 Other pet type&quot;}" 
-                href="http://www.aspca.org/pet-care/general-pet-care/low-cost-spayneuter-programs" target="_blank">this tool</a>.</p>
-              </div> */}
-
-            {/* </div> */}
           </div>
           
 

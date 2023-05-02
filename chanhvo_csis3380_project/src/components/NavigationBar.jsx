@@ -32,7 +32,6 @@ const NavigationBar = () => {
       <Router>
           <Navbar bg="light" expand="lg" >
         <Container fluid className='w-70 p-3 col'>
-          {/* <Navbar.Brand href="/"><img src='RehomeLogo.jpg' alt='logo' style={{height: "10vh", width: "10vh"}}/></Navbar.Brand> */}
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse className="row justify-content-end" align = "end">
 
@@ -52,19 +51,12 @@ const NavigationBar = () => {
               {/* If use logged in, will show the dropdown nav items */}
 
               {isLoggedIn ? (<NavDropdown title="My Account" id="navbarScrollingDropdown">
-                {/* <NavDropdown.Item> */}
                   <Link className="nav-link fs-5" to={`profile/${loggedInID}`}>My Profile</Link>
-                {/* </NavDropdown.Item>
-                <NavDropdown.Item > */}
                   <Link className="nav-link fs-5" to="/manageposting">Manage Posting</Link>
-                {/* </NavDropdown.Item> */}
                 <NavDropdown.Divider />
                 <Link className="nav-link fs-5" to="logout">
                   <button onClick={handleLoggout}>Logout</button>
                   </Link>
-                {/* <NavDropdown.Item href="logout">
-                  Logout
-                </NavDropdown.Item> */}
               </NavDropdown>) : ""}
               
             </Nav> 

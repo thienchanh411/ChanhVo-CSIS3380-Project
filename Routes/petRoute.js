@@ -159,52 +159,6 @@ app.post("/", async (req, res) => {
     }
 })
 
-// app.post("/", async (req, res) => {
-//     const {petName, ownerId, petType, breed, isSpayed, rehomeReason, gender, age, size, image, color,
-//     description, diet, status} = req.body
-
-//     console.log(petName, ownerId, petType, breed, isSpayed, rehomeReason, gender, age, size, image, color,
-//         description, diet, status);
-    
-//     try{
-       
-//         const newPet = new Pet({
-//             petName, 
-//             ownerId,
-//             petType,
-//             breed, 
-//             isSpayed,
-//             rehomeReason, 
-//             gender, 
-//             age, 
-//             size, 
-//             color,
-//             image, 
-//             description, 
-//             diet, 
-//             status
-            
-//         });
-
-//         await mongoose.connect(urlMongoDB);
-//         console.log("Connnected from post Pet API");
-//         newPet.save(err => {
-//             if(err){
-//                 console.log("Error when post a new pet", err);
-//                 res.send("Error when post a new pet");
-//             } 
-//             else {
-//                 console.log("Added new user successfully")
-//                 res.send(newPet);
-//                 mongoose.connection.close();
-//             }
-//         })
-
-//     }catch (err) {
-//         console.log("Error from post API pet", err);
-//     }
-// })
-
 // UPDATE PET INFORMATION
 
 app.put("/update/:id", async(req, res) => {
