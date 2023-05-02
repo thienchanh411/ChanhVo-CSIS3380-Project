@@ -84,48 +84,4 @@ app.post("/", async (req, res) =>  {
 
 })
 
-// app.post("/", async (req, res) =>  {
-
-//     const {email, password, firstname, lastname, phone, street, city, province, postcode} = req.body;
-//     const status = true;
-//     console.log(email, password, firstname, lastname, phone, street, city,province, postcode)
-    
-//     let validEmail = "";
-
-//     try{
-        
-//         await mongoose.connect(urlMongoDB);
-//         console.log("Connected to MongoDB");
-  
-//         console.log("Approproate email")
-//             const user1 = new User({
-//                 email,
-//                 password,
-//                 firstname ,
-//                 lastname ,
-//                 phone,
-//                 street,
-//                 city,
-//                 province,
-//                 postcode,
-//                 status,
-//             });
-//             await mongoose.connect(urlMongoDB);
-//             user1.save(err=> {
-//             if(err) {
-//                 console.log("Error when Post request", err);
-//                 res.send("Error when add new user")
-//             }else {
-//                 console.log("Added new user successfully")
-//                 res.send(user1);
-//                 mongoose.connection.close();
-//             }
-//         })
-
-//     }catch (error) {
-//         console.log("Error when post in api/register ", error)
-//     }
-
-// })
-
 module.exports = app;
